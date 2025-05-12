@@ -1,0 +1,14 @@
+.button {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.button--arrow {
+  position: relative;
+
+  &:after {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+}

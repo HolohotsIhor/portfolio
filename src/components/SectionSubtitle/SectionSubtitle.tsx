@@ -8,7 +8,7 @@ type SectionSubtitleProps = {
 export const SectionSubtitle: React.FC<SectionSubtitleProps> = ({ text }) => {
     return (
         <p className={styles.sectionSubtitle}>
-            { text }
+            {text}
         </p>
     );
 }
