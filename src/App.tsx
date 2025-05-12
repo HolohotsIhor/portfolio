@@ -12,15 +12,16 @@ function App() {
       setCount(prev => prev + 1);
   }
 
-const handleDecrement = () => {
+  const handleDecrement = () => {
     setCount(prev => prev - 1);
-}
+  }
 
   return (
       <Container>
-          {/*<div>
-          <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
+          {/* TODO: need to use other svg
+            <div>
+              <a href="https://react.dev" target="_blank">
+              <img src={reactLogo} className="logo react" alt="React logo" />
             </a>
           </div>*/}
           <h1>Ihor Holohots</h1>
