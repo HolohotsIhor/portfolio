@@ -1,0 +1,39 @@
+@font-face {
+  font-family: 'Inter';
+  src: url('../fonts/otf/Inter-Regular.otf') format('otf'),
+       url('../fonts/woff/Inter-Regular.woff2') format('woff2'),
+       url('../fonts/woff/Inter-Regular.woff') format('woff'),
+       url('../fonts/ttf/Inter-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('../fonts/otf/Inter-Bold.otf') format('opentype'),
+  url('../fonts/woff/Inter-Bold.woff2') format('woff2'),
+  url('../fonts/woff/Inter-Bold.woff') format('woff'),
+  url('../fonts/ttf/Inter-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('../fonts/otf/Inter-Light.otf') format('opentype'),
+  url('../fonts/woff/Inter-Light.woff2') format('woff2'),
+  url('../fonts/woff/Inter-Light.woff') format('woff'),
+  url('../fonts/ttf/Inter-Light.ttf') format('truetype');
+  font-weight: 300;  /* Light weight */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('../fonts/otf/Inter-Medium.otf') format('opentype'),
+  url('../fonts/woff/Inter-Medium.woff2') format('woff2'),
+  url('../fonts/woff/Inter-Medium.woff') format('woff'),
+  url('../fonts/ttf/Inter-Medium.ttf') format('truetype');
+  font-weight: 500;  /* Medium weight */
+  font-style: normal;
+}

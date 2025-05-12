@@ -1,0 +1,5 @@
+@use '../../../src/assets/styles/mixins/section-subtitle' as *;
+
+.section-subtitle {
+  @include section-subtitle;
+}
