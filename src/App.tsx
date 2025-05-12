@@ -25,7 +25,7 @@ function App() {
             </a>
           </div>*/}
           <h1>Ihor Holohots</h1>
-          <SectionSubtitle text={'I build accessible, pixel-perfect digital experiences for the web'}/>
+          <SectionSubtitle text='I build accessible, pixel-perfect digital experiences for the web' />
           <div className='counter'>
               <Button text='Decrement' handler={handleDecrement} />
               <Button text='Increment' handler={handleIncrement} />
