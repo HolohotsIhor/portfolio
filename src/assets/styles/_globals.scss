@@ -8,3 +8,9 @@ body {
   font-weight: normal;
   text-rendering: optimizeSpeed;
 }
+
+.counter {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}

@@ -1,14 +1,9 @@
+@use '../../../src/assets/styles/mixins/button' as *;
+
 .button {
-  font-size: 16px;
-  font-weight: 600;
+  @include button;
 }
 
 .button--arrow {
-  position: relative;
-
-  &:after {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-  }
+  @include button-arrow;
 }
