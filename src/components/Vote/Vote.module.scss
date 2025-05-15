@@ -24,5 +24,11 @@
 .result {
   margin-bottom: 1rem;
   font-weight: bold;
-  color: red;
+  color: #ffcb3b;
+}
+
+.action {
+  display: flex;
+  gap: $x2;
+  justify-content: center;
 }

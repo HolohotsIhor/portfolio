@@ -6,20 +6,25 @@ import { Component } from 'react';
 import VoteCard from '../VoteCard/VoteCard';
 import { Button } from '../Button/Button';
 
-interface VoteState {
-    voteCounts: Record<number, number>;
-    resultMessage: string;
-}
-
 const smiles = [
     { id: 1, title: 'Smile 1', image: smile1 },
     { id: 2, title: 'Smile 2', image: smile2 },
     { id: 3, title: 'Smile 3', image: smile3 }
 ];
 
+const storageKeys = {
+    vote: 'voteCounts',
+    message: 'resultMessage',
+}
+
 const messages = {
     noVotes: 'No votes yet.',
     several: 'We have several smileys that have',
+}
+
+interface VoteState {
+    voteCounts: Record<number, number>;
+    resultMessage: string;
 }
 
 class Vote extends Component<{}, VoteState> {
@@ -31,20 +36,48 @@ class Vote extends Component<{}, VoteState> {
         }
     }
 
+    componentDidMount() {
+        const voteCounts = localStorage.getItem(storageKeys.vote);
+        const message = localStorage.getItem(storageKeys.message);
+
+        this.setState({
+            voteCounts: voteCounts ? JSON.parse(voteCounts) : {},
+            resultMessage: message || '',
+        })
+    }
+
     handleVote = (id: number) => {
-        this.setState(prevState => ({
-            voteCounts: {
+        this.setState(prevState => {
+            const updatedCounts = {
                 ...prevState.voteCounts,
                 [id]: (prevState.voteCounts[id] || 0) + 1
-            }
-        }))
+            };
+
+            localStorage.setItem('voteCounts', JSON.stringify(updatedCounts));
+            return { voteCounts: updatedCounts };
+        })
+    }
+
+    handleResetResults = () => {
+        const resetState = {
+            voteCounts: {},
+            resultMessage: ''
+        };
+        this.setState(resetState);
+        localStorage.removeItem(storageKeys.vote);
+        localStorage.removeItem(storageKeys.message);
     }
 
     handleShowResults = () => {
         const { voteCounts } = this.state;
         const entries = Object.entries(voteCounts);
 
-        if (entries.length === 0) this.setState({resultMessage: messages.noVotes});
+        if (entries.length === 0) {
+            const message = messages.noVotes;
+            this.setState({resultMessage: message});
+            localStorage.setItem(storageKeys.message, message);
+            return;
+        }
 
         const [maxId, maxVotes] = entries.reduce(
             (max, curr) => curr[1] > max[1] ? curr : max,
@@ -58,14 +91,19 @@ class Vote extends Component<{}, VoteState> {
             id === maxVotes && identicalVotes++;
         }
 
+        let message = '';
+
         if (identicalVotes > 1) {
-            this.setState({resultMessage: `${messages.several} ${maxVotes} votes each!`});
-            return;
+            message = `${messages.several} ${maxVotes} votes each!`;
+        } else {
+            const winner = smiles.find(smile => smile.id === Number(maxId));
+            if (winner) {
+                message = `Top vote: ${winner.title} with ${maxVotes} votes!`;
+            }
         }
 
-        const winner = smiles.find(smile => smile.id === Number(maxId));
-
-        if (winner) this.setState({resultMessage: `Top vote: ${winner.title} with ${maxVotes} votes!`});
+        this.setState({ resultMessage: message });
+        localStorage.setItem(storageKeys.message, message);
     };
 
     render() {
@@ -91,7 +129,10 @@ class Vote extends Component<{}, VoteState> {
                         />
                     ))}
                 </div>
-                <Button text='Get vote result' handler={this.handleShowResults} />
+                <div className={styles.action}>
+                    <Button text='Get vote result' handler={this.handleShowResults} />
+                    <Button text='Reset result' handler={this.handleResetResults} />
+                </div>
             </div>
         );
     }
