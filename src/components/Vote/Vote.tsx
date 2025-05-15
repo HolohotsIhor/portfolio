@@ -46,15 +46,10 @@ class Vote extends Component<{}, VoteState> {
 
         if (entries.length === 0) this.setState({resultMessage: messages.noVotes});
 
-        let maxId = null;
-        let maxVotes = 0;
-
-        for (const [id, votes] of entries) {
-            if (votes > maxVotes) {
-                maxId = id;
-                maxVotes = votes;
-            }
-        }
+        const [maxId, maxVotes] = entries.reduce(
+            (max, curr) => curr[1] > max[1] ? curr : max,
+            ['', 0]
+        );
 
         const values = Object.values(voteCounts);
         let identicalVotes = 0;
@@ -62,8 +57,6 @@ class Vote extends Component<{}, VoteState> {
         for (const id of values) {
             id === maxVotes && identicalVotes++;
         }
-
-        console.log(identicalVotes);
 
         if (identicalVotes > 1) {
             this.setState({resultMessage: `${messages.several} ${maxVotes} votes each!`});
