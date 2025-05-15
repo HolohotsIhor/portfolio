@@ -1,0 +1,69 @@
+@use '../variables' as *;
+
+@mixin above($breakpoint) {
+  @media (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin below($breakpoint) {
+  @media (max-width: $breakpoint) {
+    @content;
+  }
+}
+
+// Перевод Stylus-миксинов на SCSS
+
+@mixin mobile-only {
+  @include below($tablet - 1px) {
+    @content;
+  }
+}
+
+@mixin mobile-tablet {
+  @include below($desktop - 1px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @include above($mobile) {
+    @content;
+  }
+}
+
+@mixin tablet-sm {
+  @include above($tablet-sm) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @include above($tablet) {
+    @content;
+  }
+}
+
+@mixin tablet-lg {
+  @include above($tablet-lg) {
+    @content;
+  }
+}
+
+@mixin desktop-sm {
+  @include above($desktop-sm) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @include above($desktop) {
+    @content;
+  }
+}
+
+@mixin desktop-lg {
+  @include above($desktop-lg) {
+    @content;
+  }
+}

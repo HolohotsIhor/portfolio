@@ -1,7 +1,7 @@
 @use '../variables' as *;
 
 @mixin container {
-  max-width: $width-container;
+  max-width: $desktop;
   margin: 0 auto;
   padding: 48px;
 }

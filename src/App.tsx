@@ -1,9 +1,9 @@
-// import reactLogo from './assets/react.svg'
 import { useState } from "react";
 import "./assets/styles/index.scss";
 import { Button } from "./components/Button/Button.tsx";
 import { Container } from "./components/Container/Container.tsx";
 import { SectionSubtitle } from './components/SectionSubtitle/SectionSubtitle.tsx';
+import Vote from "./components/Vote/Vote.tsx";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -18,12 +18,6 @@ function App() {
 
   return (
       <Container>
-          {/* TODO: need to use other svg
-            <div>
-              <a href="https://react.dev" target="_blank">
-              <img src={reactLogo} className="logo react" alt="React logo" />
-            </a>
-          </div>*/}
           <h1>Ihor Holohots</h1>
           <SectionSubtitle text='I build accessible, pixel-perfect digital experiences for the web' />
           <div className='counter'>
@@ -31,6 +25,7 @@ function App() {
               <Button text='Increment' handler={handleIncrement} />
           </div>
           <span>{count}</span>
+          <Vote />
       </Container>
   )
 }
