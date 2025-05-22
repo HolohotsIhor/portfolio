@@ -1,0 +1,23 @@
+@use '../../../src/assets/styles/variables' as *;
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: $x;
+  font-size: $x2;
+  margin-top: $x2;
+  margin-bottom: $x2;
+}
+
+.link {
+  color: #64748B;
+  transition: .2s;
+
+  &:hover {
+    color: white;
+  }
+
+  &.active {
+    color: white;
+  }
+}

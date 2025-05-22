@@ -1,0 +1,25 @@
+@use '../../../src/assets/styles/variables' as *;
+
+.select {
+  color: $color-bg-dark-blue;
+  display: flex;
+  align-items: center;
+  background-color: #f0f0f0;
+  border-radius: 20px;
+  padding: 4px;
+  width: 55px;
+  justify-content: space-between;
+  position: relative;
+  cursor: pointer;
+}
+
+.option {
+  flex: 1;
+  text-align: center;
+  z-index: 2;
+  padding: 6px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: $color-bg-dark-blue;
+  transition: color 0.3s ease;
+}
