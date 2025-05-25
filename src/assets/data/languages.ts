@@ -13,6 +13,9 @@ const EN_translations = {
         ABOUT_ME: 'About me',
         SKILLS: 'Skills & Experience',
         GITHUB: 'My Github',
+    },
+    ERROR_PAGE: {
+        TITLE: 'Error page'
     }
 };
 const UA_translations = {
@@ -30,6 +33,9 @@ const UA_translations = {
         ABOUT_ME: 'Про мене',
         SKILLS: 'Скіли та досвід',
         GITHUB: 'Мій Github',
+    },
+    ERROR_PAGE: {
+        TITLE: 'Сторінка помилки'
     }
 };
 

@@ -6,18 +6,31 @@ import { ErrorPage } from './pages/Error/Error.tsx';
 import { SkillsExperience } from './pages/SkillsExperience/SkillsExperience.tsx';
 import { Github } from './pages/Github/Github.tsx';
 import { AboutMe } from './pages/AboutMe/AboutMe.tsx';
-import { LanguageContext, ThemeContext } from './contexts/LanguageContext';
+import { LanguageCode, LanguageContext, ThemeCode, ThemeContext } from './contexts/LanguageContext';
 import { useEffect, useState } from 'react';
-import { LANG_EN, LANG_UA, THEME_COLOR_DARK } from './helpers/constant.ts';
+import { LANG_EN, THEME_COLOR_DARK } from './helpers/constant.ts';
 import { Footer } from './components/Footer/Footer.tsx';
 import { Header } from './components/Header/Header.tsx';
+import { LANG_STORAGE_KEY, LANG_UA, THEME_COLOR_LIGHT, THEME_STORAGE_KEY } from './helpers/constant';
 
 function App() {
-  const [language, setLanguage] = useState(LANG_EN);
-  const [themeColor, setThemeColor] = useState(THEME_COLOR_DARK);
+  const [language, setLanguage] = useState<LanguageCode>(LANG_EN);
+  const [themeColor, setThemeColor] = useState<ThemeCode>(THEME_COLOR_DARK);
 
   useEffect(() => {
-     document.body.classList.add(themeColor);
+    const storedLang = localStorage.getItem(LANG_STORAGE_KEY);
+    const storedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+
+    if (storedTheme === THEME_COLOR_LIGHT || storedTheme === THEME_COLOR_DARK) {
+        setThemeColor(storedTheme);
+        document.body.classList.add(storedTheme);
+    } else {
+        setThemeColor(THEME_COLOR_DARK);
+        document.body.classList.add(THEME_COLOR_DARK);
+    }
+
+    if (storedLang === LANG_EN || storedLang === LANG_UA) setLanguage(storedLang as LanguageCode);
+    else setLanguage(LANG_EN);
   }, []);
 
   useEffect(() => {

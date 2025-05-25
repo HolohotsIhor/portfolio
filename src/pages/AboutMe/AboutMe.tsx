@@ -9,16 +9,8 @@ export const AboutMe = () => {
 
     return (
         <div>
-            <h1>
-                {language.value === LANG_EN
-                    ? languages.EN.ABOUT_ME.TITLE
-                    : languages.UA.ABOUT_ME.TITLE}
-            </h1>
-            <SectionSubtitle text={
-                language.value === LANG_EN
-                    ? languages.EN.ABOUT_ME.SUBTITLE
-                    : languages.UA.ABOUT_ME.SUBTITLE
-            } />
+            <h1>{languages[language.value].ABOUT_ME.TITLE}</h1>
+            <SectionSubtitle text={languages[language.value].ABOUT_ME.SUBTITLE} />
         </div>
     );
 }

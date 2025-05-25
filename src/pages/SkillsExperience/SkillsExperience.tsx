@@ -4,17 +4,11 @@ import { LANG_EN } from '../../helpers/constant';
 import { languages } from '../../assets/data/languages';
 
 export const SkillsExperience = () => {
-    const languageContext = useContext(LanguageContext);
+    const language = useContext(LanguageContext);
 
     return (
         <div>
-            <h1>
-                {
-                    languageContext.value === LANG_EN
-                        ? languages.EN.SKILLS.TITLE
-                        : languages.UA.SKILLS.TITLE
-                }
-            </h1>
+            <h1>{languages[language.value].SKILLS.TITLE}</h1>
         </div>
     );
 }
