@@ -1,4 +1,4 @@
-import { ErrorMessage, Field, Form, Formik, FormikErrors} from 'formik';
+import { ErrorMessage, Field, Form, Formik } from 'formik';
 import styles from './ContactForm.module.scss';
 import * as Yup from 'yup';
 import { useContext } from 'react';
@@ -94,7 +94,7 @@ export const ContactForm = () => {
                         <option value="usa">USA</option>
                         <option value="other">Other world</option>
                     </Field>
-                    <ErrorMessage name='location' component='div' className={styles.location} />
+                    <ErrorMessage name='location' component='div' className={styles.error} />
                 </div>
 
                 <button type='submit' className={styles.button}>
