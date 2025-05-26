@@ -2,33 +2,31 @@ import { useContext } from 'react';
 import styles from './Nav.module.scss'
 import { NavLink } from 'react-router';
 import { LanguageContext } from '../../contexts/LanguageContext';
-import { LANG_EN } from '../../helpers/constant';
 import { languages } from '../../assets/data/languages';
 
 export const Nav = () => {
-    const languageContext = useContext(LanguageContext);
+    const language = useContext(LanguageContext);
 
     const items = [
         {
             id: 1,
-            name: languageContext.value === LANG_EN
-                ? languages.EN.NAV.ABOUT_ME
-                : languages.UA.NAV.ABOUT_ME,
+            name: languages[language.value].NAV.ABOUT_ME,
             link: '/',
         },
         {
             id: 2,
-            name: languageContext.value === LANG_EN
-                ? languages.EN.NAV.SKILLS
-                : languages.UA.NAV.SKILLS,
-            link: '/skills-experience',
+            name: languages[language.value].NAV.SKILLS,
+            link: '/portfolio/skills-experience',
         },
         {
             id: 3,
-            name: languageContext.value === LANG_EN
-                ? languages.EN.NAV.GITHUB
-                : languages.UA.NAV.GITHUB,
-            link: '/github',
+            name: languages[language.value].NAV.GITHUB,
+            link: '/portfolio/github',
+        },
+        {
+            id: 4,
+            name: languages[language.value].NAV.CONTACTS,
+            link: '/portfolio/contacts',
         },
     ];
 

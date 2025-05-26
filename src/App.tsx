@@ -6,6 +6,7 @@ import { ErrorPage } from './pages/Error/Error.tsx';
 import { SkillsExperience } from './pages/SkillsExperience/SkillsExperience.tsx';
 import { Github } from './pages/Github/Github.tsx';
 import { AboutMe } from './pages/AboutMe/AboutMe.tsx';
+import { Contacts } from './pages/Contacts/Contacts.tsx';
 import { LanguageCode, LanguageContext, ThemeCode, ThemeContext } from './contexts/LanguageContext';
 import { useEffect, useState } from 'react';
 import { LANG_EN, THEME_COLOR_DARK } from './helpers/constant.ts';
@@ -46,8 +47,9 @@ function App() {
                     <Header />
                     <Routes>
                         <Route path='/' element={<AboutMe />} />
-                        <Route path='/skills-experience' element={<SkillsExperience />} />
-                        <Route path='/github' element={<Github />} />
+                        <Route path='/portfolio/skills-experience' element={<SkillsExperience />} />
+                        <Route path='/portfolio/github' element={<Github />} />
+                        <Route path='/portfolio/contacts' element={<Contacts />} />
                         <Route path='*' element={<ErrorPage />} />
                     </ Routes>
                     <Nav />

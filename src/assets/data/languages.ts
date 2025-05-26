@@ -9,15 +9,41 @@ const EN_translations = {
     GITHUB: {
         TITLE: 'Github page',
     },
+    CONTACTS: {
+        TITLE: 'Contacts page',
+    },
+    ERROR_PAGE: {
+        TITLE: 'Error page',
+    },
     NAV: {
         ABOUT_ME: 'About me',
         SKILLS: 'Skills & Experience',
         GITHUB: 'My Github',
+        CONTACTS: 'Contacts',
     },
-    ERROR_PAGE: {
-        TITLE: 'Error page'
-    }
+    FORM_ERRORS: {
+        NAME: {
+            ALLOWD: 'Only letters and spaces allowed.',
+            MIN: 'Name must be at least 2 characters.',
+            MAX: 'Name must be at most 30 characters.',
+            REQUIRED: 'Please input your name',
+        },
+        COMPANY: {
+            ALLOWD: 'Only letters, numbers, dots, dashes and spaces allowed.',
+            MIN: 'Company must be at least 2 characters.',
+            MAX: 'Company must be at most 50 characters.',
+            REQUIRED: 'Please input company',
+        },
+        EMAIL: {
+            INVALID: 'Invalid email address.',
+            REQUIRED: 'Please input email',
+        },
+        LOCATION: {
+            REQUIRED: 'Please select a region',
+        },
+    },
 };
+
 const UA_translations = {
     ABOUT_ME: {
         TITLE: 'Ігор Гологоц',
@@ -29,14 +55,39 @@ const UA_translations = {
     GITHUB: {
         TITLE: 'Сторінка Github',
     },
+    CONTACTS: {
+        TITLE: 'Сторінка контактів',
+    },
+    ERROR_PAGE: {
+        TITLE: 'Сторінка помилки',
+    },
     NAV: {
         ABOUT_ME: 'Про мене',
         SKILLS: 'Скіли та досвід',
         GITHUB: 'Мій Github',
+        CONTACTS: 'Зв\'язок зі мною',
     },
-    ERROR_PAGE: {
-        TITLE: 'Сторінка помилки'
-    }
+    FORM_ERRORS: {
+        NAME: {
+            ALLOWD: 'Допускаються лише літери та пробіли.',
+            MIN: "Ім'я повинно містити щонайменше 2 символи.",
+            MAX: "Ім'я повинно містити не більше 30 символів.",
+            REQUIRED: "Введіть ваше ім'я.",
+        },
+        COMPANY: {
+            ALLOWD: 'Допускаються лише літери, цифри, крапки, дефіси та пробіли.',
+            MIN: 'Назва компанії повинна містити щонайменше 2 символи.',
+            MAX: 'Назва компанії повинна містити не більше 50 символів.',
+            REQUIRED: 'Введіть назву компанії.',
+        },
+        EMAIL: {
+            INVALID: 'Невірна електронна адреса.',
+            REQUIRED: 'Введіть електронну адресу.',
+        },
+        LOCATION: {
+            REQUIRED: 'Оберіть регіон.',
+        },
+    },
 };
 
 export const languages = {
