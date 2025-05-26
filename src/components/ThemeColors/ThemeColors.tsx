@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import styles from './ThemeColors.module.scss'
 import { ThemeCode, ThemeContext } from '../../contexts/LanguageContext';
-import { ACTIVE, THEME_COLOR_DARK, THEME_COLOR_LIGHT, THEME_STORAGE_KEY } from '../../helpers/constant';
+import { THEME_COLOR_DARK, THEME_COLOR_LIGHT, THEME_STORAGE_KEY } from '../../helpers/constant';
 
 export const ThemeColors = () => {
     const theme = useContext(ThemeContext);

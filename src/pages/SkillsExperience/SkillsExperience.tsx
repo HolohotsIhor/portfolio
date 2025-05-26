@@ -1,6 +1,5 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { LanguageContext } from '../../contexts/LanguageContext';
-import { LANG_EN } from '../../helpers/constant';
 import { languages } from '../../assets/data/languages';
 
 export const SkillsExperience = () => {
