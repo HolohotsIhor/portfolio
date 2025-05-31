@@ -1,4 +1,3 @@
-import { useContext } from 'react';
 import styles from './Nav.module.scss'
 import { NavLink } from 'react-router';
 import { languages } from '../../assets/data/languages';

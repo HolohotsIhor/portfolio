@@ -37,8 +37,8 @@ export const Github = () => {
     const formikConfig = {
         initialValues,
         validationSchema,
-        onChange: (values: FormValues) => {
-            console.log(values)
+        onSubmit: (values: FormValues) => {
+            console.log('Submitted values:', values);
         }
     }
 
