@@ -5,7 +5,7 @@ import {
     THEME_COLOR_DARK,
     THEME_STORAGE_KEY,
     ThemeCodes,
-    THEME_COLOR_LIGHT
+    THEME_COLOR_LIGHT, LANG_EN
 } from '../../helpers/constant.ts';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
@@ -15,7 +15,7 @@ const savedLang = localStorage.getItem(LANG_STORAGE_KEY);
 const isThemeCode = (value: any): value is ThemeCodes =>
     value === THEME_COLOR_DARK || value === THEME_COLOR_LIGHT;
 const isLanguageCode = (value: any): value is LanguageCodes =>
-    value === 'EN' || value === 'UA'; // или лучше: [LANG_EN, LANG_UA].includes(value)
+    [LANG_EN, LANG_UA].includes(value);
 
 interface IWebsite {
     theme: ThemeCodes;
