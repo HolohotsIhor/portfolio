@@ -1,22 +1,35 @@
-import { useContext } from 'react';
 import styles from './ThemeColors.module.scss'
-import { ThemeCode, ThemeContext } from '../../contexts/LanguageContext';
-import { THEME_COLOR_DARK, THEME_COLOR_LIGHT, THEME_STORAGE_KEY } from '../../helpers/constant';
+import { ACTIVE, THEME_COLOR_DARK, THEME_COLOR_LIGHT, THEME_STORAGE_KEY, ThemeCodes } from '../../helpers/constant';
+import { useTypedSelector } from '../../hooks/useRedux.ts';
+import { useAction } from '../../hooks/useActions.ts';
+import React from 'react';
 
 export const ThemeColors = () => {
-    const theme = useContext(ThemeContext);
+    const { theme } = useTypedSelector(state => state.website);
+    const { changeTheme } = useAction();
 
-    const handleThemeChange = (newTheme: ThemeCode) => {
-        theme.change(newTheme);
-        localStorage.setItem(THEME_STORAGE_KEY, newTheme);
+    const handleThemeChange = (e: React.MouseEvent<HTMLDivElement>) => {
+        const target = (e.target as HTMLElement).closest('[data-color]') as HTMLElement | null;
+        const newTheme = target?.dataset.color as ThemeCodes | undefined;
+
+        if (newTheme && (newTheme === THEME_COLOR_LIGHT || newTheme === THEME_COLOR_DARK)) {
+            document.body.classList.remove(THEME_COLOR_LIGHT, THEME_COLOR_DARK);
+            document.body.classList.add(newTheme);
+            localStorage.setItem(THEME_STORAGE_KEY, newTheme);
+            changeTheme(newTheme);
+        }
     }
 
     return (
-        <div className={styles.switcher}>
+        <div
+            className={styles.switcher}
+            onClick={handleThemeChange}
+        >
+            {/*TODO: need adding this items in array and mapping result*/}
             <button
-                onClick={() => handleThemeChange(THEME_COLOR_LIGHT)}
+                data-color={THEME_COLOR_LIGHT}
                 aria-label='Light theme'
-                className={`${styles.item} ${theme.value === THEME_COLOR_LIGHT && styles.isActive}`}>
+                className={`${styles.item} ${theme === THEME_COLOR_LIGHT ? styles[ACTIVE] : ''}`}>
                 <svg
                     xmlns='http://www.w3.org/2000/svg'
                     fill='none'
@@ -35,9 +48,9 @@ export const ThemeColors = () => {
             </button>
 
             <button
-                onClick={() => handleThemeChange(THEME_COLOR_DARK)}
+                data-color={THEME_COLOR_DARK}
                 aria-label='Dark theme'
-                className={`${styles.item} ${theme.value === THEME_COLOR_DARK && styles.isActive}`}>
+                className={`${styles.item} ${theme === THEME_COLOR_DARK ? styles[ACTIVE] : ''}`}>
                 <svg
                     xmlns='http://www.w3.org/2000/svg'
                     fill='currentColor'

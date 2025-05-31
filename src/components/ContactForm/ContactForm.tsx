@@ -1,9 +1,8 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import styles from './ContactForm.module.scss';
 import * as Yup from 'yup';
-import { useContext } from 'react';
-import { LanguageContext } from '../../contexts/LanguageContext';
 import { languages } from '../../assets/data/languages';
+import { useTypedSelector } from '../../hooks/useRedux.ts';
 
 type FormValues = {
     name: string;
@@ -20,27 +19,27 @@ const initialValues: FormValues = {
 };
 
 export const ContactForm = () => {
-    const language = useContext(LanguageContext);
+    const { language } = useTypedSelector(state => state.website);
 
     const validationSchema = Yup.object({
         name: Yup.string()
-            .matches(/^[A-Za-zА-Яа-яЁё\s]+$/, languages[language.value].FORM_ERRORS.NAME.ALLOWD)
-            .min(2, languages[language.value].FORM_ERRORS.NAME.MIN)
-            .max(30, languages[language.value].FORM_ERRORS.NAME.MAX)
-            .required(languages[language.value].FORM_ERRORS.NAME.REQUIRED),
+            .matches(/^[A-Za-zА-Яа-яЁё\s]+$/, languages[language].FORM_ERRORS.NAME.ALLOWD)
+            .min(2, languages[language].FORM_ERRORS.NAME.MIN)
+            .max(30, languages[language].FORM_ERRORS.NAME.MAX)
+            .required(languages[language].FORM_ERRORS.NAME.REQUIRED),
 
         company: Yup.string()
-            .matches(/^[\w\s\.\-]+$/, languages[language.value].FORM_ERRORS.COMPANY.ALLOWD)
-            .min(2, languages[language.value].FORM_ERRORS.COMPANY.MIN)
-            .max(50, languages[language.value].FORM_ERRORS.COMPANY.MAX)
-            .required(languages[language.value].FORM_ERRORS.COMPANY.REQUIRED),
+            .matches(/^[\w\s\.\-]+$/, languages[language].FORM_ERRORS.COMPANY.ALLOWD)
+            .min(2, languages[language].FORM_ERRORS.COMPANY.MIN)
+            .max(50, languages[language].FORM_ERRORS.COMPANY.MAX)
+            .required(languages[language].FORM_ERRORS.COMPANY.REQUIRED),
 
         email: Yup.string()
-            .email(languages[language.value].FORM_ERRORS.EMAIL.INVALID)
-            .required(languages[language.value].FORM_ERRORS.EMAIL.REQUIRED),
+            .email(languages[language].FORM_ERRORS.EMAIL.INVALID)
+            .required(languages[language].FORM_ERRORS.EMAIL.REQUIRED),
 
         location: Yup.string()
-            .required(languages[language.value].FORM_ERRORS.LOCATION.REQUIRED),
+            .required(languages[language].FORM_ERRORS.LOCATION.REQUIRED),
     });
 
     const formikConfig = {
@@ -57,7 +56,7 @@ export const ContactForm = () => {
                 <div className={styles.formItem}>
                     <Field
                         name='name'
-                        placeholder='Your name*'
+                        placeholder={languages[language].FORM_FIELDS.NAME}
                         className={styles.input}
                     />
                     <ErrorMessage name='name' component='div' className={styles.error}/>
@@ -66,7 +65,7 @@ export const ContactForm = () => {
                 <div className={styles.formItem}>
                     <Field
                         name='company'
-                        placeholder='Company*'
+                        placeholder={languages[language].FORM_FIELDS.COMPANY}
                         className={styles.input}
                     />
                     <ErrorMessage name='company' component='div' className={styles.error}/>
@@ -76,7 +75,7 @@ export const ContactForm = () => {
                     <Field
                         name='email'
                         type='email'
-                        placeholder='Email*'
+                        placeholder={languages[language].FORM_FIELDS.EMAIL}
                         className={styles.input}
                     />
                     <ErrorMessage name='email' component='div' className={styles.error}/>
@@ -88,17 +87,17 @@ export const ContactForm = () => {
                         name='location'
                         className={styles.input}
                     >
-                        <option value=''>Select company region*</option>
-                        <option value="ukraine">Ukraine</option>
-                        <option value="europe">Europee</option>
-                        <option value="usa">USA</option>
-                        <option value="other">Other world</option>
+                        {languages[language].FORM_FIELDS.LOCATIONS.map(option => (
+                            <option key={option.VALUE} value={option.VALUE}>
+                                {option.NAME}
+                            </option>
+                        ))}
                     </Field>
                     <ErrorMessage name='location' component='div' className={styles.error} />
                 </div>
 
                 <button type='submit' className={styles.button}>
-                    Write to me
+                    {languages[language].FORM_FIELDS.BUTTON}
                 </button>
             </Form>
         </Formik>

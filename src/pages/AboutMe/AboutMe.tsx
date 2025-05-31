@@ -1,15 +1,14 @@
-import { useContext } from 'react';
 import { SectionSubtitle } from '../../components/SectionSubtitle/SectionSubtitle';
-import { LanguageContext } from '../../contexts/LanguageContext';
 import { languages } from '../../assets/data/languages';
+import { useTypedSelector } from '../../hooks/useRedux.ts';
 
 export const AboutMe = () => {
-    const language = useContext(LanguageContext);
+    const { language } = useTypedSelector(state => state.website);
 
     return (
         <div>
-            <h1>{languages[language.value].ABOUT_ME.TITLE}</h1>
-            <SectionSubtitle text={languages[language.value].ABOUT_ME.SUBTITLE} />
+            <h1>{languages[language].ABOUT_ME.TITLE}</h1>
+            <SectionSubtitle text={languages[language].ABOUT_ME.SUBTITLE} />
         </div>
     );
 }

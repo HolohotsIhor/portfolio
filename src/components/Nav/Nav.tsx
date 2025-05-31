@@ -1,31 +1,31 @@
 import { useContext } from 'react';
 import styles from './Nav.module.scss'
 import { NavLink } from 'react-router';
-import { LanguageContext } from '../../contexts/LanguageContext';
 import { languages } from '../../assets/data/languages';
+import { useTypedSelector } from '../../hooks/useRedux.ts';
 
 export const Nav = () => {
-    const language = useContext(LanguageContext);
+    const { language } = useTypedSelector(state => state.website);
 
     const items = [
         {
             id: 1,
-            name: languages[language.value].NAV.ABOUT_ME,
+            name: languages[language].NAV.ABOUT_ME,
             link: '/',
         },
         {
             id: 2,
-            name: languages[language.value].NAV.SKILLS,
+            name: languages[language].NAV.SKILLS,
             link: '/portfolio/skills-experience',
         },
         {
             id: 3,
-            name: languages[language.value].NAV.GITHUB,
+            name: languages[language].NAV.GITHUB,
             link: '/portfolio/github',
         },
         {
             id: 4,
-            name: languages[language.value].NAV.CONTACTS,
+            name: languages[language].NAV.CONTACTS,
             link: '/portfolio/contacts',
         },
     ];

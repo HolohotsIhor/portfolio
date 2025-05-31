@@ -1,13 +1,12 @@
-import { useContext } from 'react';
-import { LanguageContext } from '../../contexts/LanguageContext';
 import { languages } from '../../assets/data/languages';
+import { useTypedSelector } from '../../hooks/useRedux.ts';
 
 export const ErrorPage = () => {
-    const language = useContext(LanguageContext);
+    const { language } = useTypedSelector(state => state.website);
 
     return (
         <div>
-            <h1>{languages[language.value].ERROR_PAGE.TITLE}</h1>
+            <h1>{languages[language].ERROR_PAGE.TITLE}</h1>
         </div>
     );
 }

@@ -42,6 +42,19 @@ const EN_translations = {
             REQUIRED: 'Please select a region',
         },
     },
+    FORM_FIELDS: {
+        NAME: 'Your name*',
+        COMPANY: 'Company*',
+        EMAIL: 'Email*',
+        LOCATIONS: [
+            { VALUE: 'default', NAME: 'Select company region*' },
+            { VALUE: 'ukraine', NAME: 'Ukraine' },
+            { VALUE: 'europe', NAME: 'Europe' },
+            { VALUE: 'usa', NAME: 'USA' },
+            { VALUE: 'other', NAME: 'Other world' },
+        ],
+        BUTTON: 'Write to me',
+    },
 };
 
 const UA_translations = {
@@ -87,6 +100,19 @@ const UA_translations = {
         LOCATION: {
             REQUIRED: 'Оберіть регіон.',
         },
+    },
+    FORM_FIELDS: {
+        NAME: 'Ваше ім’я*',
+        COMPANY: 'Компанія*',
+        EMAIL: 'Електронна пошта*',
+        LOCATIONS: [
+            { VALUE: 'default', NAME: 'Оберіть регіон компанії*' },
+            { VALUE: 'ukraine', NAME: 'Україна' },
+            { VALUE: 'europe', NAME: 'Європа' },
+            { VALUE: 'usa', NAME: 'США' },
+            { VALUE: 'other', NAME: 'Інші країни' },
+        ],
+        BUTTON: 'Написати мені',
     },
 };
 
