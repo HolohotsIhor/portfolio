@@ -33,11 +33,9 @@ export const websiteSlice = createSlice({
     reducers: {
         changeLanguage(state, action: PayloadAction<LanguageCodes>) {
             state.language = action.payload;
-            localStorage.setItem(LANG_STORAGE_KEY, action.payload)
         },
         changeTheme(state, action: PayloadAction<ThemeCodes>) {
             state.theme = action.payload;
-            localStorage.setItem(THEME_STORAGE_KEY, action.payload)
         },
     }
 })
