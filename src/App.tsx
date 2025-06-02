@@ -29,7 +29,7 @@ function App() {
             <Container>
                 <Header />
                 <Routes>
-                    <Route path="/" element={<AboutMe />} />
+                    <Route path="/portfolio" element={<AboutMe />} />
                     <Route path="/portfolio/skills-experience" element={<SkillsExperience />} />
                     <Route path="/portfolio/github" element={<Github />} />
                     <Route path="/portfolio/contacts" element={<Contacts />} />
