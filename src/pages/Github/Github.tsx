@@ -1,4 +1,4 @@
-import { use, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { languages } from '../../assets/data/languages';
 import { ErrorMessage, Field, Form, Formik, useFormikContext } from 'formik';
 import styles from '../../components/ContactForm/ContactForm.module.scss';
@@ -42,11 +42,7 @@ export const Github = () => {
     const dispatch = useTypedDispatch();
 
     useEffect(() => {
-        console.log(repos);
-    }, [repos]);
-
-    useEffect(() => {
-        inputRef.current.focus();
+        inputRef.current && inputRef.current.focus();
     }, []);
 
     useEffect(() => {
@@ -72,6 +68,9 @@ export const Github = () => {
     const formikConfig = {
         initialValues,
         validationSchema,
+        onSubmit: (values: FormValues) => {
+            console.log('Form submitted with:', values);
+        },
     }
 
     return (
@@ -87,7 +86,7 @@ export const Github = () => {
                             name='search'
                             placeholder='Input github username'
                             className={styles.input}
-                            ref={inputRef}
+                            innerRef={inputRef}
                         />
                         <ErrorMessage name='search' component='div' className={styles.error}/>
 
@@ -102,7 +101,7 @@ export const Github = () => {
 
                         {
                             repos.map(repo => (
-                                <RepoCard repo={repo} />
+                                <RepoCard key={repo.id} repo={repo} />
                             ))
                         }
                     </div>

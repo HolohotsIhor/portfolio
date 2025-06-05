@@ -26,7 +26,7 @@ export const githubSlice = createSlice({
             // --- searchUsers ---
             .addCase(searchUsers.pending, (state) => {
                 state.loading = true;
-                state.error = null;
+                state.error = '';
             })
             .addCase(searchUsers.fulfilled, (state, action: PayloadAction<IUser[]>) => {
                 state.loading = false;
@@ -40,7 +40,7 @@ export const githubSlice = createSlice({
             // --- getUserRepos ---
             .addCase(getUserRepos.pending, (state) => {
                 state.loading = true;
-                state.error = null;
+                state.error = '';
             })
             .addCase(getUserRepos.fulfilled, (state, action: PayloadAction<IRepo[]>) => {
                 state.loading = false;

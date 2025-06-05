@@ -2,7 +2,7 @@ import { Middleware } from '@reduxjs/toolkit';
 import { websiteActions } from '../website/website.slice';
 import { LANG_STORAGE_KEY, THEME_STORAGE_KEY } from '../../helpers/constant';
 
-export const localStorageMiddleware: Middleware = store => next => action => {
+export const localStorageMiddleware: Middleware = () => next => action => {
     const result = next(action);
 
     // Website

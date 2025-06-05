@@ -7,7 +7,7 @@ import { getUserRepos } from '../../store/github/githubThunk.ts';
 
 type InputResultListProps = {
     items: IUser[];
-    handleShow: () => void;
+    handleShow: (show: boolean) => void;
 };
 
 export const InputResultList: React.FC<InputResultListProps> = ({ items, handleShow }) => {
