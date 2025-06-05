@@ -1,0 +1,6 @@
+@use '../../../src/assets/styles/mixins/section-title' as *;
+
+.sectionSubtitle {
+  @include section-title;
+  max-width: 300px;
+}

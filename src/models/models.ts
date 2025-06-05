@@ -26,7 +26,6 @@ export interface IUser {
     score: number
 }
 
-// Repos
 export interface IRepo {
     id: number
     node_id: string

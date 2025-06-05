@@ -10,7 +10,7 @@ export const Nav = () => {
         {
             id: 1,
             name: languages[language].NAV.ABOUT_ME,
-            link: '/portfolio',
+            link: '/',
         },
         {
             id: 2,

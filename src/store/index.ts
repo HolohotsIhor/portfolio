@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
-import { websiteSlice } from './website/website.slice.ts';
+import { websiteReducer } from './website/website.slice.ts';
 import { localStorageMiddleware } from './middleware/localStorageMiddleware.ts';
+import { githubReducer } from './github/github.slice.ts';
 
 export const store = configureStore({
     reducer: {
-        website: websiteSlice.reducer,
+        website: websiteReducer,
+        github: githubReducer,
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware()
         .concat(localStorageMiddleware),

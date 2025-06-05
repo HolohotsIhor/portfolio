@@ -41,3 +41,4 @@ export const websiteSlice = createSlice({
 })
 
 export const websiteActions = websiteSlice.actions;
+export const websiteReducer = websiteSlice.reducer;

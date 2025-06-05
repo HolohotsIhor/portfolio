@@ -1,0 +1,38 @@
+.card {
+  background-color: #fff;
+  border: 1px solid #e1e4e8;
+  border-radius: 12px;
+  padding: 16px;
+  margin: 12px 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  }
+
+  a {
+    text-decoration: none;
+    color: #0366d6;
+
+    h2 {
+      font-size: 20px;
+      margin: 0 0 8px;
+      transition: color 0.2s;
+
+      &:hover {
+        color: #023e8a;
+      }
+    }
+  }
+
+  p {
+    margin: 6px 0;
+    color: #333;
+
+    strong {
+      color: #111;
+    }
+  }
+}
