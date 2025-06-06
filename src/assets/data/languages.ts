@@ -7,7 +7,7 @@ const EN_translations = {
         TITLE: 'Skill page',
     },
     GITHUB: {
-        TITLE: 'Github page',
+        TITLE: 'My github repos',
     },
     CONTACTS: {
         TITLE: 'Contacts page',
@@ -77,7 +77,7 @@ const UA_translations = {
     NAV: {
         ABOUT_ME: 'Про мене',
         SKILLS: 'Скіли та досвід',
-        GITHUB: 'Мій Github',
+        GITHUB: 'Мії Github репозиторії',
         CONTACTS: 'Зв\'язок зі мною',
     },
     FORM_ERRORS: {

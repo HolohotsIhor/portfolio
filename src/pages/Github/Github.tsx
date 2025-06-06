@@ -6,7 +6,7 @@ import * as Yup from 'yup';
 import { useTypedDispatch, useTypedSelector } from '../../hooks/useRedux';
 import { useDebounce } from "@uidotdev/usehooks";
 import { InputResultList } from '../../components/InputResultList/InputResultList';
-import { searchUsers } from '../../store/github/githubThunk';
+import { getUserRepos, searchUsers } from '../../store/github/githubThunk';
 import { SectionTitle } from '../../components/SectionTitle/SectionTitle';
 import { RepoCard } from '../../components/RepoCard/RepoCard.tsx';
 
@@ -43,6 +43,7 @@ export const Github = () => {
 
     useEffect(() => {
         inputRef.current && inputRef.current.focus();
+        dispatch(getUserRepos('HolohotsIhor'));
     }, []);
 
     useEffect(() => {
@@ -98,13 +99,12 @@ export const Github = () => {
                                 />
                             )
                         }
-
+                    </div>
                     {
                         repos.map(repo => (
                             <RepoCard key={repo.id} repo={repo} />
                         ))
                     }
-                    </div>
                 </Form>
             </Formik>
         </div>

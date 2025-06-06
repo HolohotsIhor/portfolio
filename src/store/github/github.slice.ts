@@ -1,11 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IRepo, IUser, } from '../../models/models';
 import { getUserRepos, searchUsers } from './githubThunk';
+import { REPO_STORAGE_KEY } from '../../helpers/constant.ts';
 
 interface usersState {
     users: IUser[],
     repos: IRepo[],
-    favourites: IRepo[],
+    favourites: string[],
     loading: boolean,
     error: string,
 }
@@ -13,7 +14,7 @@ interface usersState {
 const initialState: usersState = {
     users: [],
     repos: [],
-    favourites: [],
+    favourites: JSON.parse(localStorage.getItem(REPO_STORAGE_KEY) || '[]'),
     loading: false,
     error: '',
 }
@@ -22,9 +23,14 @@ export const githubSlice = createSlice({
     name: 'github',
     initialState,
     reducers: {
-        addFavourites: (state, action) => {
-            state.favourites = action.payload;
+        addFavourite: (state, action: PayloadAction<string>) => {
+            if (!state.favourites.includes(action.payload)) {
+                state.favourites.push(action.payload);
+            }
         },
+        removeFavourite: (state, action: PayloadAction<string>) => {
+            state.favourites = state.favourites.filter(item => item !== action.payload);
+        }
     },
     extraReducers: (builder) => {
         builder

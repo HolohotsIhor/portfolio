@@ -12,6 +12,7 @@ import { Footer } from './components/Footer/Footer.tsx';
 import { Header } from './components/Header/Header.tsx';
 import { useTypedSelector } from './hooks/useRedux.ts';
 import { LANG_STORAGE_KEY, THEME_COLOR_DARK, THEME_COLOR_LIGHT, THEME_STORAGE_KEY } from './helpers/constant.ts';
+import { FavoritesList } from './components/FavoritesList/FavoritesList.tsx';
 
 function App() {
     const { theme, language } = useTypedSelector(state => state.website);
@@ -29,7 +30,10 @@ function App() {
             <Container>
                 <Header />
                 <div className='row'>
-                    <Nav />
+                    <aside className='aside'>
+                        <Nav />
+                        <FavoritesList />
+                    </aside>
                     <Routes>
                         <Route path="/portfolio" element={<AboutMe />} />
                         <Route path="/portfolio/skills-experience" element={<SkillsExperience />} />

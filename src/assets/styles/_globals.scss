@@ -40,3 +40,14 @@ body {
 .content {
   width: 100%;
 }
+
+.aside {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: $x3*3;
+
+  @include desktop {
+    width: 250px;
+  }
+}

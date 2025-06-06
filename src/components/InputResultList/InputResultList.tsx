@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { IUser } from '../../models/models.ts';
 import styles from './InputResultList.module.scss';
 import { useTypedDispatch, useTypedSelector } from '../../hooks/useRedux.ts';
-import { Loader } from '../Loading/Loader.tsx';
+import { Loader } from '../Loader/Loader.tsx';
 import { getUserRepos } from '../../store/github/githubThunk.ts';
 
 type InputResultListProps = {
@@ -28,9 +28,11 @@ export const InputResultList: React.FC<InputResultListProps> = ({ items, handleS
     if (!items.length && !loading) return null;
 
     return (
-        <>
+        <div className='result'>
             {loading ? (
-                <Loader />
+                <div className={styles.loader}>
+                    <Loader />
+                </div>
             ) : (
                 <div className={styles.searchResult}>
                     {items.map(item => (
@@ -44,6 +46,6 @@ export const InputResultList: React.FC<InputResultListProps> = ({ items, handleS
                     ))}
                 </div>
             )}
-        </>
+        </div>
     );
 };
