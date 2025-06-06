@@ -5,7 +5,7 @@ export const SkillsExperience = () => {
     const { language } = useTypedSelector(state => state.website);
 
     return (
-        <div>
+        <div className='content'>
             <h1>{languages[language].SKILLS.TITLE}</h1>
         </div>
     );

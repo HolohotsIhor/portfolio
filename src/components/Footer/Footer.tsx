@@ -1,9 +1,7 @@
-import { LanguageToggler } from '../LanguageToggler/LanguageToggler';
-
 export const Footer = () => {
     return (
         <div>
-            <LanguageToggler />
+            This is footer
         </div>
     );
 }

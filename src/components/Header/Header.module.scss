@@ -1,0 +1,7 @@
+@use '../../../src/assets/styles/variables' as *;
+
+.header {
+  display: flex;
+  gap: $x3;
+  align-items: center;
+}

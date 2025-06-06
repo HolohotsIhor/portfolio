@@ -28,14 +28,16 @@ function App() {
         <BrowserRouter>
             <Container>
                 <Header />
-                <Routes>
-                    <Route path="/portfolio" element={<AboutMe />} />
-                    <Route path="/portfolio/skills-experience" element={<SkillsExperience />} />
-                    <Route path="/portfolio/github" element={<Github />} />
-                    <Route path="/portfolio/contacts" element={<Contacts />} />
-                    <Route path="*" element={<ErrorPage />} />
-                </Routes>
-                <Nav />
+                <div className='row'>
+                    <Nav />
+                    <Routes>
+                        <Route path="/portfolio" element={<AboutMe />} />
+                        <Route path="/portfolio/skills-experience" element={<SkillsExperience />} />
+                        <Route path="/portfolio/github" element={<Github />} />
+                        <Route path="/portfolio/contacts" element={<Contacts />} />
+                        <Route path="*" element={<ErrorPage />} />
+                    </Routes>
+                </div>
                 <Footer />
             </Container>
         </BrowserRouter>

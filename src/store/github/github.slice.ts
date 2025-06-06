@@ -5,6 +5,7 @@ import { getUserRepos, searchUsers } from './githubThunk';
 interface usersState {
     users: IUser[],
     repos: IRepo[],
+    favourites: IRepo[],
     loading: boolean,
     error: string,
 }
@@ -12,6 +13,7 @@ interface usersState {
 const initialState: usersState = {
     users: [],
     repos: [],
+    favourites: [],
     loading: false,
     error: '',
 }
@@ -20,6 +22,9 @@ export const githubSlice = createSlice({
     name: 'github',
     initialState,
     reducers: {
+        addFavourites: (state, action) => {
+            state.favourites = action.payload;
+        },
     },
     extraReducers: (builder) => {
         builder

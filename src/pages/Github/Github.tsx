@@ -74,7 +74,7 @@ export const Github = () => {
     }
 
     return (
-        <>
+        <div className='content'>
             <SectionTitle text={languages[language].GITHUB.TITLE} />
 
             <Formik {...formikConfig}>
@@ -99,14 +99,14 @@ export const Github = () => {
                             )
                         }
 
-                        {
-                            repos.map(repo => (
-                                <RepoCard key={repo.id} repo={repo} />
-                            ))
-                        }
+                    {
+                        repos.map(repo => (
+                            <RepoCard key={repo.id} repo={repo} />
+                        ))
+                    }
                     </div>
                 </Form>
             </Formik>
-        </>
+        </div>
     );
 }

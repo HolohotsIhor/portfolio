@@ -12,8 +12,6 @@
   }
 }
 
-// Перевод Stylus-миксинов на SCSS
-
 @mixin mobile-only {
   @include below($tablet - 1px) {
     @content;
