@@ -37,7 +37,7 @@ export const Nav = () => {
                         key={item.id}
                         to={item.link}
                         className={({ isActive }) =>
-                            `${styles.link} ${isActive ? styles.active : ''}`
+                            `link ${isActive ? 'active' : ''}`
                         }
                     >
                         {item.name}

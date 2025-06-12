@@ -1,6 +1,6 @@
 import { Middleware } from '@reduxjs/toolkit';
 import { websiteActions } from '../website/website.slice';
-import { REPO_STORAGE_KEY, LANG_STORAGE_KEY, THEME_STORAGE_KEY } from '../../helpers/constant';
+import { REPO_STORAGE_KEY, LANG_STORAGE_KEY, THEME_STORAGE_KEY, IS_AUTH_STORAGE_KEY } from '../../helpers/constant';
 import { githubActions } from '../github/github.slice.ts';
 
 export const localStorageMiddleware: Middleware = ({ getState }) => next => action => {
@@ -10,6 +10,7 @@ export const localStorageMiddleware: Middleware = ({ getState }) => next => acti
     // Website
     websiteActions.changeLanguage.match(action) && localStorage.setItem(LANG_STORAGE_KEY, action.payload);
     websiteActions.changeTheme.match(action) && localStorage.setItem(THEME_STORAGE_KEY, action.payload);
+    websiteActions.setIsAuth.match(action) && localStorage.setItem(IS_AUTH_STORAGE_KEY, String(action.payload));
 
     // Github
     if (githubActions.addFavourite.match(action) || githubActions.removeFavourite.match(action)) {

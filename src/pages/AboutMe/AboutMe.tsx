@@ -6,9 +6,9 @@ export const AboutMe = () => {
     const { language } = useTypedSelector(state => state.website);
 
     return (
-        <div className='content'>
+        <>
             <h1>{languages[language].ABOUT_ME.TITLE}</h1>
             <SectionSubtitle text={languages[language].ABOUT_ME.SUBTITLE} />
-        </div>
+        </>
     );
 }

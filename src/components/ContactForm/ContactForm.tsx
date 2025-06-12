@@ -3,6 +3,7 @@ import styles from './ContactForm.module.scss';
 import * as Yup from 'yup';
 import { languages } from '../../assets/data/languages';
 import { useTypedSelector } from '../../hooks/useRedux.ts';
+import { Button } from 'react-bootstrap';
 
 type FormValues = {
     name: string;
@@ -57,7 +58,7 @@ export const ContactForm = () => {
                     <Field
                         name='name'
                         placeholder={languages[language].FORM_FIELDS.NAME}
-                        className={styles.input}
+                        className='form-control'
                     />
                     <ErrorMessage name='name' component='div' className={styles.error}/>
                 </div>
@@ -66,7 +67,7 @@ export const ContactForm = () => {
                     <Field
                         name='company'
                         placeholder={languages[language].FORM_FIELDS.COMPANY}
-                        className={styles.input}
+                        className='form-control'
                     />
                     <ErrorMessage name='company' component='div' className={styles.error}/>
                 </div>
@@ -76,7 +77,7 @@ export const ContactForm = () => {
                         name='email'
                         type='email'
                         placeholder={languages[language].FORM_FIELDS.EMAIL}
-                        className={styles.input}
+                        className='form-control'
                     />
                     <ErrorMessage name='email' component='div' className={styles.error}/>
                 </div>
@@ -85,7 +86,7 @@ export const ContactForm = () => {
                     <Field
                         as='select'
                         name='location'
-                        className={styles.input}
+                        className='form-select'
                     >
                         {languages[language].FORM_FIELDS.LOCATIONS.map(option => (
                             <option key={option.VALUE} value={option.VALUE}>
@@ -96,9 +97,9 @@ export const ContactForm = () => {
                     <ErrorMessage name='location' component='div' className={styles.error} />
                 </div>
 
-                <button type='submit' className={styles.button}>
+                <Button variant="outline-light">
                     {languages[language].FORM_FIELDS.BUTTON}
-                </button>
+                </ Button>
             </Form>
         </Formik>
     );

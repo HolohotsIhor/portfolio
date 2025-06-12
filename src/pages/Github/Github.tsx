@@ -5,7 +5,7 @@ import styles from '../../components/ContactForm/ContactForm.module.scss';
 import * as Yup from 'yup';
 import { useTypedDispatch, useTypedSelector } from '../../hooks/useRedux';
 import { useDebounce } from "@uidotdev/usehooks";
-import { InputResultList } from '../../components/InputResultList/InputResultList';
+import { SearchResultList } from '../../components/InputResultList/SearchResultList';
 import { getUserRepos, searchUsers } from '../../store/github/githubThunk';
 import { SectionTitle } from '../../components/SectionTitle/SectionTitle';
 import { RepoCard } from '../../components/RepoCard/RepoCard.tsx';
@@ -75,7 +75,7 @@ export const Github = () => {
     }
 
     return (
-        <div className='content'>
+        <>
             <SectionTitle text={languages[language].GITHUB.TITLE} />
 
             <Formik {...formikConfig}>
@@ -86,14 +86,14 @@ export const Github = () => {
                         <Field
                             name='search'
                             placeholder='Input github username'
-                            className={styles.input}
+                            className='form-control'
                             innerRef={inputRef}
                         />
                         <ErrorMessage name='search' component='div' className={styles.error}/>
 
                         {
                             isResultShow && (
-                                <InputResultList
+                                <SearchResultList
                                     items={users}
                                     handleShow={setIsResultShow}
                                 />
@@ -107,6 +107,6 @@ export const Github = () => {
                     }
                 </Form>
             </Formik>
-        </div>
+        </>
     );
 }

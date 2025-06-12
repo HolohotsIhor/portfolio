@@ -23,22 +23,19 @@ body {
   margin-top: 20px;
 }
 
-.row {
-  padding: 60px 0;
+.content {
+  padding-top: 60px;
+  padding-bottom: 60px;
 
   @include tablet {
-    display: flex;
-    padding: 80px 0;
-    gap: $x3*8;
+    padding-top: 80px;
+    padding-bottom: 80px;
   }
 
   @include desktop {
-    padding: 100px 0;
+    padding-top: 120px;
+    padding-bottom: 120px;
   }
-}
-
-.content {
-  width: 100%;
 }
 
 .aside {
@@ -51,3 +48,17 @@ body {
     width: 250px;
   }
 }
+
+.link {
+  color: #64748B;
+  transition: .2s;
+
+  &:hover {
+    color: white;
+  }
+
+  &.active {
+    color: white;
+  }
+}
+

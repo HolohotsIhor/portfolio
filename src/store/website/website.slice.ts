@@ -5,12 +5,13 @@ import {
     THEME_COLOR_DARK,
     THEME_STORAGE_KEY,
     ThemeCodes,
-    THEME_COLOR_LIGHT, LANG_EN
+    THEME_COLOR_LIGHT, LANG_EN, IS_AUTH_STORAGE_KEY
 } from '../../helpers/constant.ts';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 const savedTheme = localStorage.getItem(THEME_STORAGE_KEY);
 const savedLang = localStorage.getItem(LANG_STORAGE_KEY);
+const savedIsAuth = localStorage.getItem(IS_AUTH_STORAGE_KEY);
 
 const isThemeCode = (value: any): value is ThemeCodes =>
     value === THEME_COLOR_DARK || value === THEME_COLOR_LIGHT;
@@ -20,11 +21,13 @@ const isLanguageCode = (value: any): value is LanguageCodes =>
 interface IWebsite {
     theme: ThemeCodes;
     language: LanguageCodes;
+    isAuth: boolean;
 }
 
 const initialState: IWebsite = {
     theme: isThemeCode(savedTheme) ? savedTheme : THEME_COLOR_DARK,
     language: isLanguageCode(savedLang) ? savedLang : LANG_UA,
+    isAuth: savedIsAuth === 'true',
 };
 
 export const websiteSlice = createSlice({
@@ -37,6 +40,9 @@ export const websiteSlice = createSlice({
         changeTheme(state, action: PayloadAction<ThemeCodes>) {
             state.theme = action.payload;
         },
+        setIsAuth(state, action: PayloadAction<boolean>) {
+            state.isAuth = action.payload;
+        }
     }
 })
 

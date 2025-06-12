@@ -5,44 +5,6 @@
   margin-bottom: $x2;
 }
 
-.input {
-  width: 100%;
-  padding: 0.75rem 1rem;
-  font-size: 1rem;
-  color: #0f172a;
-  background-color: #ffffff;
-  border: 2px solid #cbd5e1; /* светло-серый */
-  border-radius: 0.5rem;
-  outline: none;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-
-  &:focus {
-    border-color: #0f172a;
-    box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.1);
-  }
-
-  &::placeholder {
-    color: #94a3b8;
-  }
-}
-
-.button {
-  color: $color-bg-dark-blue;
-  background-color: white;
-  border: 2px solid #0f172a;
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  font-weight: 600;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  transition: all .3s ease;
-
-  &:hover {
-    background-color: $color-blue-gray;
-    color: white;
-  }
-}
-
 .error {
   font-size: 9px;
   letter-spacing: 0;

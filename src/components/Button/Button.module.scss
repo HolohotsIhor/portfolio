@@ -7,11 +7,3 @@
 .buttonArrow {
   @include button-arrow;
 }
-
-.primary {
-  @include button-primary;
-}
-
-.cancel {
-  @include button-cancel;
-}
