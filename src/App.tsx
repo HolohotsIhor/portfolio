@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './assets/styles/index.scss';
-import { BrowserRouter, Route, Routes } from 'react-router';
+import { Route, Routes, useNavigate } from 'react-router';
 import { Layout } from './components/Container/Layout.tsx';
 import { Nav } from './components/Nav/Nav.tsx';
 import { useEffect } from 'react';
@@ -19,6 +19,15 @@ import { Col, Row } from 'react-bootstrap';
 
 function App() {
     const { theme, language } = useTypedSelector(state => state.website);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const redirect = sessionStorage.redirect;
+        if (redirect) {
+            sessionStorage.removeItem('redirect');
+            navigate(redirect, { replace: true });
+        }
+    }, [navigate]);
 
     // Set theme color
     useEffect(() => {
@@ -29,30 +38,28 @@ function App() {
     }, []);
 
     return (
-        <BrowserRouter>
-            <Layout>
-                <Header />
-                <Row className='content'>
-                    <Col lg={3}>
-                        <aside className='aside'>
-                            <Nav />
-                            <FavoritesList />
-                        </aside>
-                    </Col>
-                    <Col lg={{ span: 8, offset: 1 }}>
-                        <Routes>
-                            <Route path="/portfolio" element={<AboutMe />} />
-                            <Route path="/portfolio/skills-experience" element={<SkillsExperience />} />
-                            <Route path="/portfolio/github" element={<Github />} />
-                            <Route path="/portfolio/contacts" element={<Contacts />} />
-                            <Route path="/portfolio/login" element={<Login />} />
-                            <Route path="*" element={<ErrorPage />} />
-                        </Routes>
-                    </Col>
-                </Row>
-                <Footer />
-            </Layout>
-        </BrowserRouter>
+        <Layout>
+            <Header />
+            <Row className='content'>
+                <Col lg={3}>
+                    <aside className='aside'>
+                        <Nav />
+                        <FavoritesList />
+                    </aside>
+                </Col>
+                <Col lg={{ span: 8, offset: 1 }}>
+                    <Routes>
+                        <Route path="/portfolio" element={<AboutMe />} />
+                        <Route path="/portfolio/skills-experience" element={<SkillsExperience />} />
+                        <Route path="/portfolio/github" element={<Github />} />
+                        <Route path="/portfolio/contacts" element={<Contacts />} />
+                        <Route path="/portfolio/login" element={<Login />} />
+                        <Route path="*" element={<ErrorPage />} />
+                    </Routes>
+                </Col>
+            </Row>
+            <Footer />
+        </Layout>
     );
 }
 

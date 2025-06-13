@@ -10,7 +10,7 @@ export const Nav = () => {
         {
             id: 1,
             name: languages[language].NAV.ABOUT_ME,
-            link: '/',
+            link: '/portfolio/',
         },
         {
             id: 2,
@@ -36,6 +36,7 @@ export const Nav = () => {
                     <NavLink
                         key={item.id}
                         to={item.link}
+                        end={item.link === '/portfolio/'}
                         className={({ isActive }) =>
                             `link ${isActive ? 'active' : ''}`
                         }
