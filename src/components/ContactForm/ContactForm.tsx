@@ -3,7 +3,7 @@ import styles from './ContactForm.module.scss';
 import * as Yup from 'yup';
 import { languages } from '../../assets/data/languages';
 import { useTypedSelector } from '../../hooks/useRedux.ts';
-import { Button } from 'react-bootstrap';
+import { Button, Input } from "antd";
 
 type FormValues = {
     name: string;
@@ -56,6 +56,7 @@ export const ContactForm = () => {
             <Form>
                 <div className={styles.formItem}>
                     <Field
+                        as={Input}
                         name='name'
                         placeholder={languages[language].FORM_FIELDS.NAME}
                         className='form-control'
@@ -65,6 +66,7 @@ export const ContactForm = () => {
 
                 <div className={styles.formItem}>
                     <Field
+                        as={Input}
                         name='company'
                         placeholder={languages[language].FORM_FIELDS.COMPANY}
                         className='form-control'
@@ -74,6 +76,7 @@ export const ContactForm = () => {
 
                 <div className={styles.formItem}>
                     <Field
+                        as={Input}
                         name='email'
                         type='email'
                         placeholder={languages[language].FORM_FIELDS.EMAIL}
@@ -97,7 +100,7 @@ export const ContactForm = () => {
                     <ErrorMessage name='location' component='div' className={styles.error} />
                 </div>
 
-                <Button variant="outline-light">
+                <Button type="primary" htmlType="submit">
                     {languages[language].FORM_FIELDS.BUTTON}
                 </ Button>
             </Form>

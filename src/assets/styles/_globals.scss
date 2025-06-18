@@ -3,18 +3,9 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  color: $color-text-lite;
   min-height: 100vh;
   font-weight: normal;
   text-rendering: optimizeSpeed;
-
-  &.themeDark {
-    background: $color-bg-dark-blue;
-  }
-
-  &.themeLight{
-    background: $color-bg-light;
-  }
 }
 
 .counter {

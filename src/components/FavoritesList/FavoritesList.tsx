@@ -5,7 +5,7 @@ export const FavoritesList = () => {
     const { favourites } = useTypedSelector(state => state.github);
 
     return (
-        <div>
+        <div className={styles.fav}>
             {
                 favourites.map(item => (
                     <div

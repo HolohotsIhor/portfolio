@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { IUser } from '../../models/models.ts';
 import styles from './SearchResultList.module.scss';
 import { useTypedDispatch, useTypedSelector } from '../../hooks/useRedux.ts';
-import { Loader } from '../Loader/Loader.tsx';
 import { getUserRepos } from '../../store/github/githubThunk.ts';
+import { Spin } from 'antd';
 
 type InputResultListProps = {
     items: IUser[];
@@ -31,7 +31,7 @@ export const SearchResultList: React.FC<InputResultListProps> = ({ items, handle
         <div className='result'>
             {loading ? (
                 <div className={styles.loader}>
-                    <Loader />
+                    <Spin />
                 </div>
             ) : (
                 <div className={styles.searchResult}>

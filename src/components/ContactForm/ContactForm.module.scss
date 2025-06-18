@@ -2,15 +2,15 @@
 
 .formItem {
   position: relative;
-  margin-bottom: $x2;
+  margin-bottom: $x3;
 }
 
 .error {
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 0;
   color: red;
   position: absolute;
-  bottom: 2px;
+  bottom: -12px;
   left: $x;
   line-height: 1;
 }

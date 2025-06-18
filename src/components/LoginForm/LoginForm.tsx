@@ -1,71 +1,75 @@
 import React, { useState } from 'react';
-import { Button, Form, Alert, Container } from 'react-bootstrap';
 import { useTypedDispatch } from '../../hooks/useRedux.ts';
 import { useAction } from '../../hooks/useActions.ts';
+import { Alert, Button, Checkbox, Form, FormProps, Input } from 'antd';
+import { SectionTitle } from '../SectionTitle/SectionTitle.tsx';
+
+type FieldType = {
+    username?: string;
+    password?: string;
+    remember?: string;
+};
 
 export const LoginForm: React.FC = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [validated, setValidated] = useState(false);
     const [error, setError] = useState('');
     const dispatch = useTypedDispatch();
     const {setIsAuth} = useAction();
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        const form = e.currentTarget;
-
-        if (form.checkValidity() === false) {
-            e.stopPropagation();
-            setValidated(true);
-            return;
-        }
+    const handleSuccess: FormProps<FieldType>['onFinish'] = (values) => {
+        const username = values.username;
+        const password = values.password;
 
         // Auth logic
-        (email === 'admin@admin.com' && password === 'admin')
+        (username === 'admin' && password === 'admin')
             ? dispatch(setIsAuth(true))
             : setError('Invalid email or password');
     };
 
+    const onFailed: FormProps<FieldType>['onFinishFailed'] = (errorInfo) => {
+        console.log('Failed:', errorInfo);
+    };
+
     return (
-        <div className='d-flex justify-content-center align-items-center'>
-            <Container>
-                <h3 className='mb-4 text-light'>Log in</h3>
+        <>
+                <SectionTitle text='Log in' />
                 {error && <Alert variant='danger'>{error}</Alert>}
-                <Form noValidate validated={validated} onSubmit={handleSubmit}>
-                    <Form.Group className='mb-3' controlId='formEmail'>
-                        <Form.Label className='text-light'>Email address</Form.Label>
-                        <Form.Control
-                            required
-                            type='email'
-                            placeholder='Enter email'
-                            value={email}
-                            onChange={e => setEmail(e.target.value)}
-                        />
-                        <Form.Control.Feedback type='invalid'>
-                            Please enter a valid email.
-                        </Form.Control.Feedback>
-                    </Form.Group>
 
-                    <Form.Group className='mb-3' controlId='formPassword'>
-                        <Form.Label className='text-light'>Password</Form.Label>
-                        <Form.Control
-                            required
-                            type='password'
-                            placeholder='Password'
-                            value={password}
-                            onChange={e => setPassword(e.target.value)}
-                        />
-                        <Form.Control.Feedback type='invalid'>
-                            Please enter your password.
-                        </Form.Control.Feedback>
-                    </Form.Group>
+                <Form
+                    name="basic"
+                    labelCol={{ span: 8 }}
+                    wrapperCol={{ span: 16 }}
+                    style={{ maxWidth: 600 }}
+                    initialValues={{ remember: true }}
+                    onFinish={handleSuccess}
+                    onFinishFailed={onFailed}
+                    autoComplete="off"
+                >
+                    <Form.Item<FieldType>
+                        label="Username"
+                        name="username"
+                        rules={[{ required: true, message: 'Please input your username!' }]}
+                    >
+                        <Input />
+                    </Form.Item>
 
-                    <Button variant='outline-light' type='submit'>
-                        Log in
-                    </Button>
+                    <Form.Item<FieldType>
+                        label="Password"
+                        name="password"
+                        rules={[{ required: true, message: 'Please input your password!' }]}
+                    >
+                        <Input.Password />
+                    </Form.Item>
+
+                    <Form.Item<FieldType> name="remember" valuePropName="checked" label={null}>
+                        <Checkbox>Remember me</Checkbox>
+                    </Form.Item>
+
+                    <Form.Item label={null}>
+                        <Button type="primary" htmlType="submit">
+                            Submit
+                        </Button>
+                    </Form.Item>
                 </Form>
-            </Container>
-        </div>
+        </>
     );
 }

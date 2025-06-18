@@ -3,6 +3,7 @@
 .switcher {
   display: flex;
   gap: $x;
+  color: #ccc;
 }
 
 .item {
@@ -11,6 +12,6 @@
 
   &.isActive,
   &:hover {
-    color: $color-blue-gray;
+    color: $color-blue;
   }
 }

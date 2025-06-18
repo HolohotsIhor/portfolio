@@ -19,13 +19,13 @@ const isLanguageCode = (value: any): value is LanguageCodes =>
     [LANG_EN, LANG_UA].includes(value);
 
 interface IWebsite {
-    theme: ThemeCodes;
+    themeColor: ThemeCodes;
     language: LanguageCodes;
     isAuth: boolean;
 }
 
 const initialState: IWebsite = {
-    theme: isThemeCode(savedTheme) ? savedTheme : THEME_COLOR_DARK,
+    themeColor: isThemeCode(savedTheme) ? savedTheme : THEME_COLOR_DARK,
     language: isLanguageCode(savedLang) ? savedLang : LANG_UA,
     isAuth: savedIsAuth === 'true',
 };
@@ -38,7 +38,7 @@ export const websiteSlice = createSlice({
             state.language = action.payload;
         },
         changeTheme(state, action: PayloadAction<ThemeCodes>) {
-            state.theme = action.payload;
+            state.themeColor = action.payload;
         },
         setIsAuth(state, action: PayloadAction<boolean>) {
             state.isAuth = action.payload;

@@ -1,7 +1,7 @@
 @use '../../../src/assets/styles/variables' as *;
 
 .select {
-  color: $color-bg-dark-blue;
+  color: $color-blue;
   display: flex;
   align-items: center;
   background-color: #f0f0f0;
@@ -20,6 +20,6 @@
   padding: 6px 0;
   font-size: 14px;
   font-weight: 600;
-  color: $color-bg-dark-blue;
+  color: $color-blue;
   transition: color 0.3s ease;
 }

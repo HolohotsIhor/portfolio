@@ -1,13 +1,14 @@
 import { SectionSubtitle } from '../../components/SectionSubtitle/SectionSubtitle';
 import { languages } from '../../assets/data/languages';
 import { useTypedSelector } from '../../hooks/useRedux.ts';
+import { SectionTitle } from '../../components/SectionTitle/SectionTitle.tsx';
 
 export const AboutMe = () => {
     const { language } = useTypedSelector(state => state.website);
 
     return (
         <>
-            <h1>{languages[language].ABOUT_ME.TITLE}</h1>
+            <SectionTitle text={languages[language].ABOUT_ME.TITLE} />
             <SectionSubtitle text={languages[language].ABOUT_ME.SUBTITLE} />
         </>
     );

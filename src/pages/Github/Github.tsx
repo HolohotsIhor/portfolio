@@ -1,14 +1,15 @@
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { languages } from '../../assets/data/languages';
 import { ErrorMessage, Field, Form, Formik, useFormikContext } from 'formik';
 import styles from '../../components/ContactForm/ContactForm.module.scss';
 import * as Yup from 'yup';
 import { useTypedDispatch, useTypedSelector } from '../../hooks/useRedux';
-import { useDebounce } from "@uidotdev/usehooks";
+import { useDebounce } from '@uidotdev/usehooks';
 import { SearchResultList } from '../../components/InputResultList/SearchResultList';
 import { getUserRepos, searchUsers } from '../../store/github/githubThunk';
 import { SectionTitle } from '../../components/SectionTitle/SectionTitle';
 import { RepoCard } from '../../components/RepoCard/RepoCard.tsx';
+import { Input } from 'antd';
 
 type FormValues = {
     search: string;
@@ -33,12 +34,12 @@ const FormObserver = ({ onChange }: FormObserverProps) => {
     return null;
 };
 
-export const Github = () => {
+export const Github: React.FC  = () => {
     const [isResultShow, setIsResultShow] = useState(false);
     const inputRef = useRef<HTMLInputElement>(null);
     const [searchTerm, setSearchTerm] = useState('');
     const { language } = useTypedSelector(state => state.website);
-    const { users, repos } = useTypedSelector(state => state.github);
+    const { users, repos, loading } = useTypedSelector(state => state.github);
     const dispatch = useTypedDispatch();
 
     useEffect(() => {
@@ -84,13 +85,13 @@ export const Github = () => {
 
                     <div className={styles.formItem}>
                         <Field
+                            as={Input}
                             name='search'
                             placeholder='Input github username'
                             className='form-control'
                             innerRef={inputRef}
                         />
                         <ErrorMessage name='search' component='div' className={styles.error}/>
-
                         {
                             isResultShow && (
                                 <SearchResultList
@@ -102,7 +103,7 @@ export const Github = () => {
                     </div>
                     {
                         repos.map(repo => (
-                            <RepoCard key={repo.id} repo={repo} />
+                            <RepoCard key={repo.id} repo={repo} loading={loading}/>
                         ))
                     }
                 </Form>

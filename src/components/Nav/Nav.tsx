@@ -1,50 +1,53 @@
-import styles from './Nav.module.scss'
-import { NavLink } from 'react-router';
+import { NavLink, useLocation } from 'react-router-dom'; // <-- правильный импорт
 import { languages } from '../../assets/data/languages';
 import { useTypedSelector } from '../../hooks/useRedux.ts';
+import { Menu } from 'antd';
 
 export const Nav = () => {
     const { language } = useTypedSelector(state => state.website);
+    const location = useLocation();
 
     const items = [
         {
-            id: 1,
-            name: languages[language].NAV.ABOUT_ME,
-            link: '/portfolio/',
+            key: '/portfolio/',
+            label: (
+                <NavLink to="/portfolio/">
+                    {languages[language].NAV.ABOUT_ME}
+                </NavLink>
+            ),
         },
         {
-            id: 2,
-            name: languages[language].NAV.SKILLS,
-            link: '/portfolio/skills-experience',
+            key: '/portfolio/skills-experience',
+            label: (
+                <NavLink to="/portfolio/skills-experience">
+                    {languages[language].NAV.SKILLS}
+                </NavLink>
+            ),
         },
         {
-            id: 3,
-            name: languages[language].NAV.GITHUB,
-            link: '/portfolio/github',
+            key: '/portfolio/github',
+            label: (
+                <NavLink to="/portfolio/github">
+                    {languages[language].NAV.GITHUB}
+                </NavLink>
+            ),
         },
         {
-            id: 4,
-            name: languages[language].NAV.CONTACTS,
-            link: '/portfolio/contacts',
+            key: '/portfolio/contacts',
+            label: (
+                <NavLink to="/portfolio/contacts">
+                    {languages[language].NAV.CONTACTS}
+                </NavLink>
+            ),
         },
     ];
 
     return (
-        <nav className={styles.nav}>
-            {
-                items.map(item => (
-                    <NavLink
-                        key={item.id}
-                        to={item.link}
-                        end={item.link === '/portfolio/'}
-                        className={({ isActive }) =>
-                            `link ${isActive ? 'active' : ''}`
-                        }
-                    >
-                        {item.name}
-                    </NavLink>
-                ))
-            }
-        </nav>
+        <Menu
+            theme="dark"
+            mode="inline"
+            selectedKeys={[location.pathname]} // <-- привязка к текущему пути
+            items={items}
+        />
     );
-}
+};

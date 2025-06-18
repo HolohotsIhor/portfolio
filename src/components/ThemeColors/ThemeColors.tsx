@@ -5,7 +5,7 @@ import { useAction } from '../../hooks/useActions.ts';
 import React from 'react';
 
 export const ThemeColors = () => {
-    const { theme } = useTypedSelector(state => state.website);
+    const { themeColor } = useTypedSelector(state => state.website);
     const { changeTheme } = useAction();
 
     const handleThemeChange = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -13,8 +13,6 @@ export const ThemeColors = () => {
         const newTheme = target?.dataset.color as ThemeCodes | undefined;
 
         if (newTheme && (newTheme === THEME_COLOR_LIGHT || newTheme === THEME_COLOR_DARK)) {
-            document.body.classList.remove(THEME_COLOR_LIGHT, THEME_COLOR_DARK);
-            document.body.classList.add(newTheme);
             localStorage.setItem(THEME_STORAGE_KEY, newTheme);
             changeTheme(newTheme);
         }
@@ -29,7 +27,7 @@ export const ThemeColors = () => {
             <button
                 data-color={THEME_COLOR_LIGHT}
                 aria-label='Light theme'
-                className={`${styles.item} ${theme === THEME_COLOR_LIGHT ? styles[ACTIVE] : ''}`}>
+                className={`${styles.item} ${themeColor === THEME_COLOR_LIGHT ? styles[ACTIVE] : ''}`}>
                 <svg
                     xmlns='http://www.w3.org/2000/svg'
                     fill='none'
@@ -50,7 +48,7 @@ export const ThemeColors = () => {
             <button
                 data-color={THEME_COLOR_DARK}
                 aria-label='Dark theme'
-                className={`${styles.item} ${theme === THEME_COLOR_DARK ? styles[ACTIVE] : ''}`}>
+                className={`${styles.item} ${themeColor === THEME_COLOR_DARK ? styles[ACTIVE] : ''}`}>
                 <svg
                     xmlns='http://www.w3.org/2000/svg'
                     fill='currentColor'
