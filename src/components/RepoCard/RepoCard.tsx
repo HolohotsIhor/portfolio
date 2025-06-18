@@ -53,7 +53,7 @@ export const RepoCard: React.FC<RepoCardProps> = ({ repo, loading }) => {
                                     href={repo.html_url}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    variant="success">View repo</Button>
+                                    type="primary">View repo</Button>
                         </ Flex>
                     </>
                 }

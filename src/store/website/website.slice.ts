@@ -25,7 +25,7 @@ interface IWebsite {
 }
 
 const initialState: IWebsite = {
-    themeColor: isThemeCode(savedTheme) ? savedTheme : THEME_COLOR_DARK,
+    themeColor: isThemeCode(savedTheme) ? savedTheme : THEME_COLOR_LIGHT,
     language: isLanguageCode(savedLang) ? savedLang : LANG_UA,
     isAuth: savedIsAuth === 'true',
 };

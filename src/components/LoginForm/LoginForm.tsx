@@ -32,8 +32,7 @@ export const LoginForm: React.FC = () => {
     return (
         <>
                 <SectionTitle text='Log in' />
-                {error && <Alert variant='danger'>{error}</Alert>}
-
+                { error && <Alert showIcon message={error} type='error' /> }
                 <Form
                     name="basic"
                     labelCol={{ span: 8 }}

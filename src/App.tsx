@@ -5,7 +5,6 @@ import { useTypedSelector } from './hooks/useRedux.ts';
 import {
     LANG_STORAGE_KEY,
     THEME_COLOR_DARK,
-    THEME_COLOR_LIGHT,
     THEME_STORAGE_KEY,
 } from './helpers/constant.ts';
 import { ErrorPage } from './pages/Error/Error.tsx';

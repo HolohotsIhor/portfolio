@@ -3,10 +3,11 @@ import { ThemeColors } from '../ThemeColors/ThemeColors';
 import { LanguageToggler } from '../LanguageToggler/LanguageToggler.tsx';
 import { NavLink } from 'react-router-dom'; // <-- исправил здесь
 import { useTypedSelector } from '../../hooks/useRedux.ts';
+import styles from './HeaderApp.module.scss'
 
 const { Header } = Layout;
 
-export const HeaderApp = ({ colorBgContainer }) => {
+export const HeaderApp = ({ colorBgContainer }: {colorBgContainer: string}) => {
     const { isAuth } = useTypedSelector(state => state.website);
 
     return (
@@ -17,9 +18,13 @@ export const HeaderApp = ({ colorBgContainer }) => {
                     {
                         isAuth
                             ? (
-                                <div>admin</div>
+                                <div className='link'>admin</div>
                             ) : (
-                                <NavLink to='/portfolio/login' className='link'>
+                                <NavLink
+                                    to='/portfolio/login'
+                                    className={({ isActive }) =>
+                                        `link ${styles.link} ${isActive ? styles.active : ''}`
+                                    }>
                                     Log in
                                 </NavLink>
                             )

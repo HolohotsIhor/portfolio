@@ -1,8 +1,7 @@
 @use '../../../src/assets/styles/variables' as *;
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  gap: $x3;
-  align-items: center;
+.link {
+  &.active {
+    color: $color-blue;
+  }
 }
