@@ -2,6 +2,7 @@ import { NavLink, useLocation } from 'react-router-dom'; // <-- правильн
 import { languages } from '../../assets/data/languages';
 import { useTypedSelector } from '../../hooks/useRedux.ts';
 import { Menu } from 'antd';
+import styles from './Nav.module.scss';
 
 export const Nav = () => {
     const { language } = useTypedSelector(state => state.website);
@@ -44,6 +45,7 @@ export const Nav = () => {
 
     return (
         <Menu
+            className={styles.nav}
             theme="dark"
             mode="inline"
             selectedKeys={[location.pathname]} // <-- привязка к текущему пути
