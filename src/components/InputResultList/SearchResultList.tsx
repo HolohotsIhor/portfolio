@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { IUser } from '../../models/models.ts';
 import styles from './SearchResultList.module.scss';
 import { useTypedDispatch, useTypedSelector } from '../../hooks/useRedux.ts';
@@ -10,7 +10,7 @@ type InputResultListProps = {
     handleShow: (show: boolean) => void;
 };
 
-export const SearchResultList: React.FC<InputResultListProps> = ({ items, handleShow }) => {
+export const SearchResultList = ({ items, handleShow }: InputResultListProps) => {
     const { loading, error } = useTypedSelector(state => state.github);
     const dispatch = useTypedDispatch();
 

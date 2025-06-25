@@ -53,3 +53,29 @@ body {
   }
 }
 
+:where(.css-dev-only-do-not-override).ant-layout-footer,
+:where(.css-dev-only-do-not-override).ant-layout {
+  background-color: $color-dark-blue;
+}
+
+.ant-drawer {
+  z-index: $z-index-top;
+}
+
+/* Menu */
+.ant-menu.ant-menu-root {
+  background: transparent;
+}
+
+.ant-menu-item  {
+  .ant-menu-title-content a {
+    color: $color-dark-blue;
+  }
+
+  &.ant-menu-item-selected,
+  &.ant-menu-item-active {
+    .ant-menu-title-content a {
+      color: white;
+    }
+  }
+}

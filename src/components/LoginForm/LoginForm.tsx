@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useTypedDispatch } from '../../hooks/useRedux.ts';
 import { useAction } from '../../hooks/useActions.ts';
 import { Alert, Button, Checkbox, Form, FormProps, Input } from 'antd';
@@ -10,7 +10,7 @@ type FieldType = {
     remember?: string;
 };
 
-export const LoginForm: React.FC = () => {
+export const LoginForm = () => {
     const [error, setError] = useState('');
     const dispatch = useTypedDispatch();
     const {setIsAuth} = useAction();

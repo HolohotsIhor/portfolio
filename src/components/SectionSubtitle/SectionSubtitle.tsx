@@ -1,11 +1,10 @@
-import React from 'react';
 import styles from './SectionSubtitle.module.scss';
 
 type SectionSubtitleProps = {
     text: string;
 };
 
-export const SectionSubtitle: React.FC<SectionSubtitleProps> = ({ text }) => {
+export const SectionSubtitle = ({ text }: SectionSubtitleProps) => {
     return (
         <p className={styles.sectionSubtitle}>
             {text}

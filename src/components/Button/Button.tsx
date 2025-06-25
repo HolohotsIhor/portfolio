@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './Button.module.scss';
 
 type ButtonProps = {
@@ -8,7 +7,7 @@ type ButtonProps = {
     cancel?: boolean;
 }
 
-export const Button: React.FC<ButtonProps> = ({ text, handler, primary = false, cancel = false }) => {
+export const Button = ({ text, handler, primary = false, cancel = false }: ButtonProps) => {
     return (
         <button
             type="button"

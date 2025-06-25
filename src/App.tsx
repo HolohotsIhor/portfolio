@@ -1,6 +1,6 @@
 import './assets/styles/index.scss';
 import { Route, Routes, useNavigate } from 'react-router-dom';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useTypedSelector } from './hooks/useRedux.ts';
 import {
     LANG_STORAGE_KEY,
@@ -20,7 +20,7 @@ import { FooterApp } from './components/FooterApp/FooterApp.tsx';
 
 const { Content } = Layout;
 
-const App: React.FC = () => {
+const App = () => {
     const { themeColor, language } = useTypedSelector(state => state.website);
     const navigate = useNavigate();
 
@@ -54,7 +54,7 @@ const App: React.FC = () => {
                 <Sidebar />
                 <Layout>
                     <HeaderApp colorBgContainer={colorBgContainer} />
-                    <Content style={{ margin: '24px 16px 0', overflow: 'initial' }}>
+                    <Content>
                         <div
                             style={{
                                 padding: 24,

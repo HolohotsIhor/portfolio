@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { languages } from '../../assets/data/languages';
 import { ErrorMessage, Field, Form, Formik, useFormikContext } from 'formik';
 import styles from '../../components/ContactForm/ContactForm.module.scss';
@@ -34,7 +34,7 @@ const FormObserver = ({ onChange }: FormObserverProps) => {
     return null;
 };
 
-export const Github: React.FC  = () => {
+export const Github = () => {
     const [isResultShow, setIsResultShow] = useState(false);
     const inputRef = useRef<HTMLInputElement>(null);
     const [searchTerm, setSearchTerm] = useState('');

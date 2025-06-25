@@ -1,8 +1,7 @@
-import React from 'react';
 import { LoginForm } from '../../components/LoginForm/LoginForm.tsx';
 import { useTypedSelector } from '../../hooks/useRedux.ts';
 
-export const Login: React.FC = () => {
+export const Login = () => {
     const { isAuth } = useTypedSelector(store => store.website);
 
     return (

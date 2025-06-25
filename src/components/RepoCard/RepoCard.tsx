@@ -1,5 +1,5 @@
 import { IRepo } from '../../models/models.ts';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styles from './RepoCard.module.scss';
 import { useTypedDispatch, useTypedSelector } from '../../hooks/useRedux.ts';
 import { useAction } from '../../hooks/useActions.ts';
@@ -10,7 +10,7 @@ type RepoCardProps = {
     loading: boolean;
 }
 
-export const RepoCard: React.FC<RepoCardProps> = ({ repo, loading }) => {
+export const RepoCard = ({ repo, loading }: RepoCardProps) => {
     const { favourites } = useTypedSelector(state => state.github);
     const [ isFav, setIsFav ] = useState(favourites.includes(repo.html_url));
     const { addFavourite, removeFavourite } = useAction();
@@ -29,7 +29,7 @@ export const RepoCard: React.FC<RepoCardProps> = ({ repo, loading }) => {
     }
 
     return (
-        <Card loading={loading} style={{ minWidth: 300 }} className={styles.repoCard}>
+        <Card loading={loading} className={styles.repoCard}>
             <Card.Meta
                 title={
                     <a href={repo.html_url}>
@@ -53,7 +53,7 @@ export const RepoCard: React.FC<RepoCardProps> = ({ repo, loading }) => {
                                     href={repo.html_url}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    type="primary">View repo</Button>
+                            >View repo</Button>
                         </ Flex>
                     </>
                 }
