@@ -7,11 +7,11 @@ import styles from './HeaderApp.module.scss'
 
 const { Header } = Layout;
 
-export const HeaderApp = ({ colorBgContainer }: {colorBgContainer: string}) => {
+export const HeaderApp = () => {
     const { isAuth } = useTypedSelector(state => state.website);
 
     return (
-        <Header style={{ background: colorBgContainer }}>
+        <Header>
             <Flex justify='space-between' align='center' style={{ width: '100%' }}>
                 <LanguageToggler />
                 <Flex gap='2rem'>

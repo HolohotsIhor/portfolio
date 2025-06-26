@@ -68,14 +68,72 @@ body {
 }
 
 .ant-menu-item  {
-  .ant-menu-title-content a {
-    color: $color-dark-blue;
+  .ant-menu-title-content {
+    &:hover {
+      a {
+        color: $color-dark-blue;
+      }
+    }
+
+    a {
+      color: $color-dark-blue;
+    }
   }
 
-  &.ant-menu-item-selected,
   &.ant-menu-item-active {
+    .ant-menu-title-content a {
+      color: $color-blue;
+    }
+  }
+
+  &.ant-menu-item-selected {
     .ant-menu-title-content a {
       color: white;
     }
+  }
+}
+
+.ant-card-meta-description {
+  display: flex;
+  flex-direction: column;
+  gap: $x;
+}
+
+/* ANTD */
+.ant-layout-content {
+  padding: 24px;
+}
+
+/* LIGHT THEME */
+.themeLight {
+  .ant-layout-sider {
+    background-color: $color-light-gray;
+  }
+
+  .ant-layout-content,
+  .ant-layout-footer,
+  .ant-layout-header {
+    background-color: white;
+  }
+}
+
+
+/* DARK THEME */
+.themeDark {
+  background-color: $color-dark-blue;
+
+  span[aria-label="menu"] svg {
+    fill: white;
+  }
+
+  aside .ant-menu-title-content a {
+    color: white;
+  }
+
+  .ant-layout-content,
+  .ant-layout-footer,
+  .ant-layout-header,
+  .ant-layout {
+    background-color: $color-dark-blue;
   }
 }
