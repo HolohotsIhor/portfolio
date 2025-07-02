@@ -1,9 +1,0 @@
-@use '../../../src/assets/styles/mixins/button' as *;
-
-.button {
-  @include button;
-}
-
-.buttonArrow {
-  @include button-arrow;
-}

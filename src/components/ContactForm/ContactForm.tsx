@@ -3,24 +3,25 @@ import styles from './ContactForm.module.scss';
 import * as Yup from 'yup';
 import { languages } from '../../assets/data/languages';
 import { useTypedSelector } from '../../hooks/useRedux.ts';
-import { Button, Input } from "antd";
+import { Button, Input } from 'antd';
+import { FormikAntdSelect } from '../FormikAntdSelect/FormikAntdSelect.tsx';
 
 type FormValues = {
     name: string;
     company: string;
     email: string;
-    location: string;
-};
-
-const initialValues: FormValues = {
-    name: '',
-    company: '',
-    email: '',
-    location: '',
+    location: string | undefined;
 };
 
 export const ContactForm = () => {
     const { language } = useTypedSelector(state => state.website);
+
+    const initialValues: FormValues = {
+        name: '',
+        company: '',
+        email: '',
+        location: undefined,
+    };
 
     const validationSchema = Yup.object({
         name: Yup.string()
@@ -52,8 +53,8 @@ export const ContactForm = () => {
     }
 
     return (
-        <Formik {...formikConfig}>
-            <Form>
+        <Formik { ...formikConfig }>
+            <Form className={styles.form}>
                 <div className={styles.formItem}>
                     <Field
                         as={Input}
@@ -86,18 +87,12 @@ export const ContactForm = () => {
                 </div>
 
                 <div className={styles.formItem}>
-                    <Field
-                        as='select'
+                    <FormikAntdSelect
                         name='location'
-                        className='form-select'
-                    >
-                        {languages[language].FORM_FIELDS.LOCATIONS.map(option => (
-                            <option key={option.VALUE} value={option.VALUE}>
-                                {option.NAME}
-                            </option>
-                        ))}
-                    </Field>
-                    <ErrorMessage name='location' component='div' className={styles.error} />
+                        options={languages[language].FORM_FIELDS.LOCATIONS}
+                        placeholder={languages[language].FORM_FIELDS.SELECT_DEFAULT}
+                    />
+                    <ErrorMessage name='location' component='div' className={styles.error}/>
                 </div>
 
                 <Button type="primary" htmlType="submit">

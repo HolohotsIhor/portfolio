@@ -14,11 +14,18 @@ import { AboutMe } from './pages/AboutMe/AboutMe.tsx';
 import { Contacts } from './pages/Contacts/Contacts.tsx';
 import { Login } from './pages/Login/Login.tsx';
 import { ConfigProvider, Layout } from 'antd';
+import { theme as antdTheme } from 'antd';
 import { Sidebar } from './components/Sidebar/Sidebar.tsx';
 import { HeaderApp } from './components/HeaderApp/HeaderApp.tsx';
 import { FooterApp } from './components/FooterApp/FooterApp.tsx';
 
 const { Content } = Layout;
+const colorSettings = {
+    darkColorPrimary: '#052340',
+    darkColorBgContainer: '#052340',
+    lightColorPrimary: '#1890ff',
+    lightColorBgContainer: 'white',
+}
 
 const App = () => {
     const { themeColor, language } = useTypedSelector(state => state.website);
@@ -47,7 +54,19 @@ const App = () => {
 
     return (
         <ConfigProvider
-
+            theme={{
+                algorithm: themeColor === THEME_COLOR_DARK
+                    ? antdTheme.darkAlgorithm
+                    : antdTheme.defaultAlgorithm,
+                token: {
+                    colorPrimary: themeColor === THEME_COLOR_DARK
+                        ? colorSettings.darkColorPrimary
+                        : colorSettings.lightColorPrimary,
+                    colorBgContainer: themeColor === THEME_COLOR_DARK
+                        ? colorSettings.darkColorBgContainer
+                        : colorSettings.lightColorBgContainer,
+                },
+            }}
         >
             <Layout hasSider>
                 <Sidebar />

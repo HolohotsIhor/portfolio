@@ -47,12 +47,12 @@ const EN_translations = {
         COMPANY: 'Company*',
         EMAIL: 'Email*',
         LOCATIONS: [
-            { VALUE: 'default', NAME: 'Select company region*' },
             { VALUE: 'ukraine', NAME: 'Ukraine' },
             { VALUE: 'europe', NAME: 'Europe' },
             { VALUE: 'usa', NAME: 'USA' },
             { VALUE: 'other', NAME: 'Other world' },
         ],
+        SELECT_DEFAULT: 'Select company region*',
         BUTTON: 'Write to me',
     },
 };
@@ -106,12 +106,12 @@ const UA_translations = {
         COMPANY: 'Компанія*',
         EMAIL: 'Електронна пошта*',
         LOCATIONS: [
-            { VALUE: 'default', NAME: 'Оберіть регіон компанії*' },
             { VALUE: 'ukraine', NAME: 'Україна' },
             { VALUE: 'europe', NAME: 'Європа' },
             { VALUE: 'usa', NAME: 'США' },
             { VALUE: 'other', NAME: 'Інші країни' },
         ],
+        SELECT_DEFAULT: 'Оберіть регіон компанії*',
         BUTTON: 'Написати мені',
     },
 };
