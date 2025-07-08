@@ -1,9 +1,9 @@
 import { languages } from '../../assets/data/languages';
-import { useTypedSelector } from '../../hooks/useRedux.ts';
+import { useAppSelector } from '../../hooks/useRedux.ts';
 import { SectionTitle } from '../../components/SectionTitle/SectionTitle.tsx';
 
 export const SkillsExperience = () => {
-    const { language } = useTypedSelector(state => state.website);
+    const { language } = useAppSelector(state => state.website);
 
     return (
         <>

@@ -1,11 +1,11 @@
 import styles from './ThemeColors.module.scss'
 import { ACTIVE, THEME_COLOR_DARK, THEME_COLOR_LIGHT, THEME_STORAGE_KEY, ThemeCodes } from '../../helpers/constant';
-import { useTypedSelector } from '../../hooks/useRedux.ts';
+import { useAppSelector } from '../../hooks/useRedux.ts';
 import { useAction } from '../../hooks/useActions.ts';
 import React from 'react';
 
 export const ThemeColors = () => {
-    const { themeColor } = useTypedSelector(state => state.website);
+    const { themeColor } = useAppSelector(state => state.website);
     const { changeTheme } = useAction();
 
     const handleThemeChange = (e: React.MouseEvent<HTMLDivElement>) => {

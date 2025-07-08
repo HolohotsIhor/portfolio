@@ -1,11 +1,11 @@
 import { NavLink, useLocation } from 'react-router-dom'; // <-- правильный импорт
 import { languages } from '../../assets/data/languages';
-import { useTypedSelector } from '../../hooks/useRedux.ts';
+import { useAppSelector } from '../../hooks/useRedux.ts';
 import { Menu } from 'antd';
 import styles from './Nav.module.scss';
 
 export const Nav = () => {
-    const { language } = useTypedSelector(state => state.website);
+    const { language } = useAppSelector(state => state.website);
     const location = useLocation();
 
     const items = [

@@ -15,41 +15,41 @@
         }
     </style>
 </head>
-    
+
 <body>
 <div class='wrapper'>
     <div class='pad1'>
         <h1><a href="../../../index.html">All files</a> / <a href="index.html">src/pages/Login</a> Login.tsx</h1>
         <div class='clearfix'>
-            
+
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
                 <span class='fraction'>0/11</span>
             </div>
-        
-            
+
+
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
                 <span class='fraction'>1/1</span>
             </div>
-        
-            
+
+
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
                 <span class='fraction'>1/1</span>
             </div>
-        
-            
+
+
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
                 <span class='fraction'>0/11</span>
             </div>
-        
-            
+
+
         </div>
         <p class="quiet">
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
@@ -99,10 +99,10 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
 <span class="cstat-no" title="statement not covered" >import { LoginForm } from '../../components/LoginForm/LoginForm.tsx';</span>
-<span class="cstat-no" title="statement not covered" >import { useTypedSelector } from '../../hooks/useRedux.ts';</span>
+<span class="cstat-no" title="statement not covered" >import { useAppSelector } from '../../hooks/useRedux.ts';</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >export const Login: React.FC = () =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    const { isAuth } = useTypedSelector(store =&gt; store.website);</span>
+<span class="cstat-no" title="statement not covered" >    const { isAuth } = useAppSelector(store =&gt; store.website);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    return (</span>
 <span class="cstat-no" title="statement not covered" >        &lt;&gt;</span>
@@ -133,4 +133,3 @@
         <script src="../../../block-navigation.js"></script>
     </body>
 </html>
-    

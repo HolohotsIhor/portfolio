@@ -2,10 +2,10 @@ import React from 'react';
 import styles from './LanguageToggler.module.scss';
 import { LANG_EN, LANG_UA, LanguageCodes } from '../../helpers/constant.ts';
 import { useAction } from '../../hooks/useActions.ts';
-import { useTypedSelector } from '../../hooks/useRedux.ts';
+import { useAppSelector } from '../../hooks/useRedux.ts';
 
 export const LanguageToggler = () => {
-    const { language } = useTypedSelector(state => state.website);
+    const { language } = useAppSelector(state => state.website);
     const { changeLanguage } = useAction();
 
     const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {

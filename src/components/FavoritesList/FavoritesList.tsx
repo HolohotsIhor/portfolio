@@ -1,8 +1,8 @@
-import { useTypedSelector } from '../../hooks/useRedux.ts';
+import { useAppSelector } from '../../hooks/useRedux.ts';
 import styles from './FavoritesList.module.scss';
 
 export const FavoritesList = () => {
-    const { favourites } = useTypedSelector(state => state.github);
+    const { favourites } = useAppSelector(state => state.github);
 
     return (
         <div className={styles.fav}>

@@ -15,41 +15,41 @@
         }
     </style>
 </head>
-    
+
 <body>
 <div class='wrapper'>
     <div class='pad1'>
         <h1><a href="../../../index.html">All files</a> / <a href="index.html">src/components/RepoCard</a> RepoCard.tsx</h1>
         <div class='clearfix'>
-            
+
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
                 <span class='fraction'>0/45</span>
             </div>
-        
-            
+
+
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
                 <span class='fraction'>1/1</span>
             </div>
-        
-            
+
+
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
                 <span class='fraction'>1/1</span>
             </div>
-        
-            
+
+
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
                 <span class='fraction'>0/45</span>
             </div>
-        
-            
+
+
         </div>
         <p class="quiet">
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
@@ -192,7 +192,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { IRepo } from '../../models/models.ts';
 <span class="cstat-no" title="statement not covered" >import React, { useState } from 'react';</span>
 <span class="cstat-no" title="statement not covered" >import styles from './RepoCard.module.scss';</span>
-<span class="cstat-no" title="statement not covered" >import { useTypedDispatch, useTypedSelector } from '../../hooks/useRedux.ts';</span>
+<span class="cstat-no" title="statement not covered" >import { useAppDispatch, useAppSelector } from '../../hooks/useRedux.ts';</span>
 <span class="cstat-no" title="statement not covered" >import { useAction } from '../../hooks/useActions.ts';</span>
 <span class="cstat-no" title="statement not covered" >import { Button, Card, Flex } from 'antd';</span>
 &nbsp;
@@ -202,10 +202,10 @@ type RepoCardProps = {
 }
 &nbsp;
 <span class="cstat-no" title="statement not covered" >export const RepoCard: React.FC&lt;RepoCardProps&gt; = ({ repo, loading }) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    const { favourites } = useTypedSelector(state =&gt; state.github);</span>
+<span class="cstat-no" title="statement not covered" >    const { favourites } = useAppSelector(state =&gt; state.github);</span>
 <span class="cstat-no" title="statement not covered" >    const [ isFav, setIsFav ] = useState(favourites.includes(repo.html_url));</span>
 <span class="cstat-no" title="statement not covered" >    const { addFavourite, removeFavourite } = useAction();</span>
-<span class="cstat-no" title="statement not covered" >    const dispatch = useTypedDispatch();</span>
+<span class="cstat-no" title="statement not covered" >    const dispatch = useAppDispatch();</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    console.log(loading);</span>
 &nbsp;
@@ -271,4 +271,3 @@ type RepoCardProps = {
         <script src="../../../block-navigation.js"></script>
     </body>
 </html>
-    
