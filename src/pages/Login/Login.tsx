@@ -1,8 +1,8 @@
 import { LoginForm } from '../../components/LoginForm/LoginForm.tsx';
-import { useTypedSelector } from '../../hooks/useRedux.ts';
+import { useAppSelector } from '../../hooks/useRedux.ts';
 
 export const Login = () => {
-    const { isAuth } = useTypedSelector(store => store.website);
+    const { isAuth } = useAppSelector(store => store.website);
 
     return (
         <>

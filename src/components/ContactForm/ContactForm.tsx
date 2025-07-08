@@ -2,7 +2,7 @@ import { ErrorMessage, Field, Form, Formik } from 'formik';
 import styles from './ContactForm.module.scss';
 import * as Yup from 'yup';
 import { languages } from '../../assets/data/languages';
-import { useTypedSelector } from '../../hooks/useRedux.ts';
+import { useAppSelector } from '../../hooks/useRedux.ts';
 import { Button, Input } from 'antd';
 import { FormikAntdSelect } from '../FormikAntdSelect/FormikAntdSelect.tsx';
 
@@ -14,7 +14,7 @@ type FormValues = {
 };
 
 export const ContactForm = () => {
-    const { language } = useTypedSelector(state => state.website);
+    const { language } = useAppSelector(state => state.website);
 
     const initialValues: FormValues = {
         name: '',

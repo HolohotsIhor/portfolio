@@ -15,41 +15,41 @@
         }
     </style>
 </head>
-    
+
 <body>
 <div class='wrapper'>
     <div class='pad1'>
         <h1><a href="../../../index.html">All files</a> / <a href="index.html">src/components/ContactForm</a> ContactForm.tsx</h1>
         <div class='clearfix'>
-            
+
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
                 <span class='fraction'>0/88</span>
             </div>
-        
-            
+
+
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
                 <span class='fraction'>0/1</span>
             </div>
-        
-            
+
+
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
                 <span class='fraction'>0/1</span>
             </div>
-        
-            
+
+
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
                 <span class='fraction'>0/88</span>
             </div>
-        
-            
+
+
         </div>
         <p class="quiet">
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
@@ -285,7 +285,7 @@
 <span class="cstat-no" title="statement not covered" >import styles from './ContactForm.module.scss';</span>
 <span class="cstat-no" title="statement not covered" >import * as Yup from 'yup';</span>
 <span class="cstat-no" title="statement not covered" >import { languages } from '../../assets/data/languages';</span>
-<span class="cstat-no" title="statement not covered" >import { useTypedSelector } from '../../hooks/useRedux.ts';</span>
+<span class="cstat-no" title="statement not covered" >import { useAppSelector } from '../../hooks/useRedux.ts';</span>
 <span class="cstat-no" title="statement not covered" >import { Button, Input } from "antd";</span>
 &nbsp;
 type FormValues = {
@@ -303,7 +303,7 @@ type FormValues = {
 <span class="cstat-no" title="statement not covered" >};</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >export const ContactForm = () =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    const { language } = useTypedSelector(state =&gt; state.website);</span>
+<span class="cstat-no" title="statement not covered" >    const { language } = useAppSelector(state =&gt; state.website);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    const validationSchema = Yup.object({</span>
 <span class="cstat-no" title="statement not covered" >        name: Yup.string()</span>
@@ -409,4 +409,3 @@ type FormValues = {
         <script src="../../../block-navigation.js"></script>
     </body>
 </html>
-    

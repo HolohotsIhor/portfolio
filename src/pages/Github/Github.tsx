@@ -3,7 +3,7 @@ import { languages } from '../../assets/data/languages';
 import { ErrorMessage, Field, Form, Formik, useFormikContext } from 'formik';
 import styles from '../../components/ContactForm/ContactForm.module.scss';
 import * as Yup from 'yup';
-import { useTypedDispatch, useTypedSelector } from '../../hooks/useRedux';
+import { useAppDispatch, useAppSelector } from '../../hooks/useRedux';
 import { useDebounce } from '@uidotdev/usehooks';
 import { SearchResultList } from '../../components/InputResultList/SearchResultList';
 import { getUserRepos, searchUsers } from '../../store/github/githubThunk';
@@ -38,9 +38,9 @@ export const Github = () => {
     const [isResultShow, setIsResultShow] = useState(false);
     const inputRef = useRef<HTMLInputElement>(null);
     const [searchTerm, setSearchTerm] = useState('');
-    const { language } = useTypedSelector(state => state.website);
-    const { users, repos, loading } = useTypedSelector(state => state.github);
-    const dispatch = useTypedDispatch();
+    const { language } = useAppSelector(state => state.website);
+    const { users, repos, loading } = useAppSelector(state => state.github);
+    const dispatch = useAppDispatch();
 
     useEffect(() => {
         inputRef.current && inputRef.current.focus();

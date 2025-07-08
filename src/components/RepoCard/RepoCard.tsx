@@ -1,7 +1,7 @@
 import { IRepo } from '../../models/models.ts';
 import { useState } from 'react';
 import styles from './RepoCard.module.scss';
-import { useTypedDispatch, useTypedSelector } from '../../hooks/useRedux.ts';
+import { useAppDispatch, useAppSelector } from '../../hooks/useRedux.ts';
 import { useAction } from '../../hooks/useActions.ts';
 import { Button, Card, Flex } from 'antd';
 
@@ -11,10 +11,10 @@ type RepoCardProps = {
 }
 
 export const RepoCard = ({ repo, loading }: RepoCardProps) => {
-    const { favourites } = useTypedSelector(state => state.github);
+    const { favourites } = useAppSelector(state => state.github);
     const [ isFav, setIsFav ] = useState(favourites.includes(repo.html_url));
     const { addFavourite, removeFavourite } = useAction();
-    const dispatch = useTypedDispatch();
+    const dispatch = useAppDispatch();
 
     console.log(loading);
 

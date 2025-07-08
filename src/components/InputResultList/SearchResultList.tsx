@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { IUser } from '../../models/models.ts';
 import styles from './SearchResultList.module.scss';
-import { useTypedDispatch, useTypedSelector } from '../../hooks/useRedux.ts';
+import { useAppDispatch, useAppSelector } from '../../hooks/useRedux.ts';
 import { getUserRepos } from '../../store/github/githubThunk.ts';
 import { Spin } from 'antd';
 
@@ -11,8 +11,8 @@ type InputResultListProps = {
 };
 
 export const SearchResultList = ({ items, handleShow }: InputResultListProps) => {
-    const { loading, error } = useTypedSelector(state => state.github);
-    const dispatch = useTypedDispatch();
+    const { loading, error } = useAppSelector(state => state.github);
+    const dispatch = useAppDispatch();
 
     useEffect(() => {
         error && console.log(error);

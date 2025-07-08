@@ -2,13 +2,13 @@ import { Flex, Layout } from 'antd';
 import { ThemeColors } from '../ThemeColors/ThemeColors';
 import { LanguageToggler } from '../LanguageToggler/LanguageToggler.tsx';
 import { NavLink } from 'react-router-dom'; // <-- исправил здесь
-import { useTypedSelector } from '../../hooks/useRedux.ts';
+import { useAppSelector } from '../../hooks/useRedux.ts';
 import styles from './HeaderApp.module.scss'
 
 const { Header } = Layout;
 
 export const HeaderApp = () => {
-    const { isAuth } = useTypedSelector(state => state.website);
+    const { isAuth } = useAppSelector(state => state.website);
 
     return (
         <Header>

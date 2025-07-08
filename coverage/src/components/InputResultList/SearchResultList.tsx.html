@@ -15,41 +15,41 @@
         }
     </style>
 </head>
-    
+
 <body>
 <div class='wrapper'>
     <div class='pad1'>
         <h1><a href="../../../index.html">All files</a> / <a href="index.html">src/components/InputResultList</a> SearchResultList.tsx</h1>
         <div class='clearfix'>
-            
+
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
                 <span class='fraction'>0/36</span>
             </div>
-        
-            
+
+
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
                 <span class='fraction'>0/1</span>
             </div>
-        
-            
+
+
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
                 <span class='fraction'>0/1</span>
             </div>
-        
-            
+
+
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
                 <span class='fraction'>0/36</span>
             </div>
-        
-            
+
+
         </div>
         <p class="quiet">
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
@@ -168,7 +168,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import React, { useEffect } from 'react';<span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ></span></span></span>
 import { IUser } from '../../models/models.ts';
 <span class="cstat-no" title="statement not covered" >import styles from './SearchResultList.module.scss';</span>
-<span class="cstat-no" title="statement not covered" >import { useTypedDispatch, useTypedSelector } from '../../hooks/useRedux.ts';</span>
+<span class="cstat-no" title="statement not covered" >import { useAppDispatch, useAppSelector } from '../../hooks/useRedux.ts';</span>
 <span class="cstat-no" title="statement not covered" >import { getUserRepos } from '../../store/github/githubThunk.ts';</span>
 <span class="cstat-no" title="statement not covered" >import { Spin } from 'antd';</span>
 &nbsp;
@@ -178,8 +178,8 @@ type InputResultListProps = {
 };
 &nbsp;
 <span class="cstat-no" title="statement not covered" >export const SearchResultList: React.FC&lt;InputResultListProps&gt; = ({ items, handleShow }) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    const { loading, error } = useTypedSelector(state =&gt; state.github);</span>
-<span class="cstat-no" title="statement not covered" >    const dispatch = useTypedDispatch();</span>
+<span class="cstat-no" title="statement not covered" >    const { loading, error } = useAppSelector(state =&gt; state.github);</span>
+<span class="cstat-no" title="statement not covered" >    const dispatch = useAppDispatch();</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    useEffect(() =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >        error &amp;&amp; console.log(error);</span>
@@ -235,4 +235,3 @@ type InputResultListProps = {
         <script src="../../../block-navigation.js"></script>
     </body>
 </html>
-    

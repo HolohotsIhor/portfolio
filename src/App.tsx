@@ -1,7 +1,7 @@
 import './assets/styles/index.scss';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
-import { useTypedSelector } from './hooks/useRedux.ts';
+import { useAppDispatch, useAppSelector } from './hooks/useRedux.ts';
 import {
     LANG_STORAGE_KEY,
     THEME_COLOR_DARK, THEME_COLOR_LIGHT,
@@ -18,6 +18,7 @@ import { theme as antdTheme } from 'antd';
 import { Sidebar } from './components/Sidebar/Sidebar.tsx';
 import { HeaderApp } from './components/HeaderApp/HeaderApp.tsx';
 import { FooterApp } from './components/FooterApp/FooterApp.tsx';
+import { getWebsiteTranslates } from './store/website/websiteThunk.ts';
 
 const { Content } = Layout;
 const colorSettings = {
@@ -28,8 +29,13 @@ const colorSettings = {
 }
 
 const App = () => {
-    const { themeColor, language } = useTypedSelector(state => state.website);
+    const { themeColor, language } = useAppSelector(state => state.website);
     const navigate = useNavigate();
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        dispatch(getWebsiteTranslates());
+    }, [dispatch]);
 
     useEffect(() => {
         const body = document.querySelector('body');

@@ -1,6 +1,6 @@
 import { bindActionCreators } from '@reduxjs/toolkit';
 import { websiteActions } from '../store/website/website.slice.ts';
-import { useTypedDispatch } from './useRedux.ts';
+import { useAppDispatch } from './useRedux.ts';
 import { githubActions } from '../store/github/github.slice.ts';
 
 const actions = {
@@ -9,7 +9,7 @@ const actions = {
 }
 
 export const useAction = () => {
-    const dispatch = useTypedDispatch()
+    const dispatch = useAppDispatch()
     // Bind actions and dispatch
     return bindActionCreators(actions, dispatch)
 }

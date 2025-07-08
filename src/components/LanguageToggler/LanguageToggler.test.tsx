@@ -3,9 +3,9 @@ import { describe, it, expect, vi } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { LanguageToggler } from './LanguageToggler';
 
-// Mock Redux-hook useTypedSelector
+// Mock Redux-hook useAppSelector
 vi.mock('../../hooks/useRedux.ts', () => ({
-    useTypedSelector: vi.fn()
+    useAppSelector: vi.fn()
 }));
 
 // Mock hook
@@ -13,7 +13,7 @@ vi.mock('../../hooks/useActions.ts', () => ({
     useAction: vi.fn()
 }));
 
-import { useTypedSelector } from '../../hooks/useRedux.ts';
+import { useAppSelector } from '../../hooks/useRedux.ts';
 import { useAction } from '../../hooks/useActions.ts';
 import { LANG_EN, LANG_UA } from '../../helpers/constant.ts';
 
@@ -22,7 +22,7 @@ describe('LanguageToggler component', () => {
         const mockChangeLanguage = vi.fn();
 
         // @ts-ignore
-        useTypedSelector.mockReturnValue({ language: LANG_EN });
+        useAppSelector.mockReturnValue({ language: LANG_EN });
         // @ts-ignore
         useAction.mockReturnValue({ changeLanguage: mockChangeLanguage });
 

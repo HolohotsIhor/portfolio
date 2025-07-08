@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useTypedDispatch } from '../../hooks/useRedux.ts';
+import { useAppDispatch } from '../../hooks/useRedux.ts';
 import { useAction } from '../../hooks/useActions.ts';
 import { Alert, Button, Checkbox, Form, FormProps, Input } from 'antd';
 import { SectionTitle } from '../SectionTitle/SectionTitle.tsx';
@@ -12,7 +12,7 @@ type FieldType = {
 
 export const LoginForm = () => {
     const [error, setError] = useState('');
-    const dispatch = useTypedDispatch();
+    const dispatch = useAppDispatch();
     const {setIsAuth} = useAction();
 
     const handleSuccess: FormProps<FieldType>['onFinish'] = (values) => {
