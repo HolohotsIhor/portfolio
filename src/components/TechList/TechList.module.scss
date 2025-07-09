@@ -1,0 +1,20 @@
+@use '../../../src/assets/styles/variables' as *;
+@use '../../../src/assets/styles/mixins/media-queries' as *;
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $x3;
+  font-size: 32px;
+  margin: 32px 0;
+
+  @include tablet {
+    flex-direction: column;
+    order: 1;
+    margin: 0;
+  }
+
+  @include desktop {
+    flex-direction: row;
+  }
+}

@@ -8,7 +8,7 @@ import {
     THEME_COLOR_LIGHT, LANG_EN, IS_AUTH_STORAGE_KEY
 } from '../../helpers/constant.ts';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { getWebsiteTranslates } from './websiteThunk.ts';
+import { addExperienceByLang, getWebsiteTranslates } from './websiteThunk.ts';
 import { WebsiteTranslations } from '../../models/translationsModels.ts';
 
 const savedTheme = localStorage.getItem(THEME_STORAGE_KEY);
@@ -25,7 +25,7 @@ interface IWebsite {
     language: LanguageCodes;
     isAuth: boolean;
     loading: boolean;
-    error: string;
+    error: string | null;
     languages: WebsiteTranslations[];
 }
 
@@ -34,7 +34,7 @@ const initialState: IWebsite = {
     language: isLanguageCode(savedLang) ? savedLang : LANG_UA,
     isAuth: savedIsAuth === 'true',
     loading: false,
-    error: '',
+    error: null,
     languages: [],
 };
 
@@ -56,6 +56,7 @@ export const websiteSlice = createSlice({
         builder
             .addCase(getWebsiteTranslates.pending, (state) => {
                 state.loading = true;
+                state.error = null;
             })
             .addCase(getWebsiteTranslates.fulfilled, (state, action: PayloadAction<WebsiteTranslations[]>) => {
                 state.loading = false;
@@ -65,7 +66,30 @@ export const websiteSlice = createSlice({
                 state.loading = false;
                 state.error = action.error.message || 'Failed to fetch repos';
             })
-    }
+
+            // === ADD EXPERIENCE BY LANG ===
+            .addCase(addExperienceByLang.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(addExperienceByLang.fulfilled, (state, action) => {
+                const { lang, experience } = action.meta.arg;
+                const langObj = state.languages.find(item => item.lang === lang);
+
+                state.loading = false;
+
+                if (langObj) {
+                    langObj.data.SKILLS.EXPERIENCE.unshift(experience);
+                }
+            })
+            .addCase(addExperienceByLang.rejected, (state, action) => {
+                const payload = action.payload as { message: string } | undefined;
+                state.loading = false;
+
+                state.error =
+                    payload?.message || action.error.message || 'Failed to add experience';
+            });
+    },
 })
 
 export const websiteActions = websiteSlice.actions;

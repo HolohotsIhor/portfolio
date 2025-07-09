@@ -102,6 +102,10 @@ body {
 /* ANTD */
 .ant-layout-content {
   padding: 24px;
+
+  @include desktop {
+    padding: 50px;
+  }
 }
 
 /* LIGHT THEME */

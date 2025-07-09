@@ -1,8 +1,15 @@
+@use '../../styles/variables' as *;
+@use './media-queries' as *;
+
 @mixin section-title {
   font-size: 20px;
   font-weight: 500;
   color: #94A3B8;
   text-transform: uppercase;
   letter-spacing: 1px;
-  margin-bottom: 1rem;
+  margin-bottom: $x3;
+
+  @include tablet {
+    margin-bottom: $x5;
+  }
 }
