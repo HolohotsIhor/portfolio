@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useAppDispatch } from '../../hooks/useRedux.ts';
 import { useAction } from '../../hooks/useActions.ts';
 import { Alert, Button, Checkbox, Form, FormProps, Input } from 'antd';
-import { SectionTitle } from '../SectionTitle/SectionTitle.tsx';
 
 type FieldType = {
     username?: string;
@@ -31,7 +30,6 @@ export const LoginForm = () => {
 
     return (
         <>
-                <SectionTitle text='Log in' />
                 { error && <Alert showIcon message={error} type='error' /> }
                 <Form
                     name="basic"

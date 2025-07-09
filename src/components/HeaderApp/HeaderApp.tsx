@@ -1,9 +1,10 @@
-import { Flex, Layout } from 'antd';
+import { NavLink } from 'react-router-dom';
+import styles from './HeaderApp.module.scss'
+import { Avatar, Flex, Layout } from 'antd';
 import { ThemeColors } from '../ThemeColors/ThemeColors';
 import { LanguageToggler } from '../LanguageToggler/LanguageToggler.tsx';
-import { NavLink } from 'react-router-dom'; // <-- исправил здесь
 import { useAppSelector } from '../../hooks/useRedux.ts';
-import styles from './HeaderApp.module.scss'
+import { UserOutlined } from '@ant-design/icons';
 
 const { Header } = Layout;
 
@@ -18,7 +19,10 @@ export const HeaderApp = () => {
                     {
                         isAuth
                             ? (
-                                <div className='link'>admin</div>
+                                <div className='link'>
+                                    <Avatar size="small" icon={<UserOutlined />} />&nbsp;
+                                    admin
+                                </div>
                             ) : (
                                 <NavLink
                                     to='/portfolio/login'

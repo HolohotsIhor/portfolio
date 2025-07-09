@@ -1,4 +1,4 @@
-import { NavLink, useLocation } from 'react-router-dom'; // <-- правильный импорт
+import { NavLink, useLocation } from 'react-router-dom';
 import { languages } from '../../assets/data/languages';
 import { useAppSelector } from '../../hooks/useRedux.ts';
 import { Menu } from 'antd';

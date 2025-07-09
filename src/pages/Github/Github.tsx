@@ -38,9 +38,10 @@ export const Github = () => {
     const [isResultShow, setIsResultShow] = useState(false);
     const inputRef = useRef<HTMLInputElement>(null);
     const [searchTerm, setSearchTerm] = useState('');
-    const { language } = useAppSelector(state => state.website);
+    const { language, languages: languagesDb } = useAppSelector(state => state.website);
     const { users, repos, loading } = useAppSelector(state => state.github);
     const dispatch = useAppDispatch();
+    const currentDataLang = languagesDb.find(item => item.lang === language)?.data;
 
     useEffect(() => {
         inputRef.current && inputRef.current.focus();
@@ -75,9 +76,11 @@ export const Github = () => {
         },
     }
 
+    if (!currentDataLang) return null;
+
     return (
         <>
-            <SectionTitle text={languages[language].GITHUB.TITLE} />
+            <SectionTitle text={currentDataLang.GITHUB.TITLE} />
 
             <Formik {...formikConfig}>
                 <Form>
@@ -89,7 +92,7 @@ export const Github = () => {
                             name='search'
                             placeholder='Input github username'
                             className='form-control'
-                            innerRef={inputRef}
+                            ref={inputRef}
                         />
                         <ErrorMessage name='search' component='div' className={styles.error}/>
                         {

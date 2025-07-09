@@ -1,15 +1,17 @@
 import { SectionSubtitle } from '../../components/SectionSubtitle/SectionSubtitle';
-import { languages } from '../../assets/data/languages';
 import { useAppSelector } from '../../hooks/useRedux.ts';
 import { SectionTitle } from '../../components/SectionTitle/SectionTitle.tsx';
 
 export const AboutMe = () => {
-    const { language } = useAppSelector(state => state.website);
+    const { language, languages } = useAppSelector(state => state.website);
+    const currentDataLang = languages.find(item => item.lang === language)?.data;
+
+    if (!currentDataLang) return null;
 
     return (
         <>
-            <SectionTitle text={languages[language].ABOUT_ME.TITLE} />
-            <SectionSubtitle text={languages[language].ABOUT_ME.SUBTITLE} />
+            <SectionTitle text={currentDataLang.ABOUT_ME.TITLE} />
+            <SectionSubtitle text={currentDataLang.ABOUT_ME.SUBTITLE} />
         </>
     );
 }

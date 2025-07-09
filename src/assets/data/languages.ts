@@ -1,20 +1,4 @@
 const EN_translations = {
-    ABOUT_ME: {
-        TITLE: 'Ihor Holohots',
-        SUBTITLE: 'I build accessible, pixel-perfect digital experiences for the web',
-    },
-    SKILLS: {
-        TITLE: 'Skill page',
-    },
-    GITHUB: {
-        TITLE: 'My github repos',
-    },
-    CONTACTS: {
-        TITLE: 'Contacts page',
-    },
-    ERROR_PAGE: {
-        TITLE: 'Error page',
-    },
     NAV: {
         ABOUT_ME: 'About me',
         SKILLS: 'Skills & Experience',
@@ -58,22 +42,6 @@ const EN_translations = {
 };
 
 const UA_translations = {
-    ABOUT_ME: {
-        TITLE: 'Ігор Гологоц',
-        SUBTITLE: 'Я створюю доступний, ідеальний цифровий продукт для онлайн простору',
-    },
-    SKILLS: {
-        TITLE: 'Сторінка скілов',
-    },
-    GITHUB: {
-        TITLE: 'Сторінка Github',
-    },
-    CONTACTS: {
-        TITLE: 'Сторінка контактів',
-    },
-    ERROR_PAGE: {
-        TITLE: 'Сторінка помилки',
-    },
     NAV: {
         ABOUT_ME: 'Про мене',
         SKILLS: 'Скіли та досвід',

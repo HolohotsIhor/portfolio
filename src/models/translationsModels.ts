@@ -1,4 +1,4 @@
-export interface WebsiteTranslation {
+export interface WebsiteTranslations {
     _id: string;
     lang: string;
     data: TranslationData;
@@ -11,6 +11,7 @@ export interface TranslationData {
     };
     SKILLS: {
         TITLE: string;
+        EXPERIENCE: Experience[];
     };
     GITHUB: {
         TITLE: string;
@@ -18,34 +19,18 @@ export interface TranslationData {
     CONTACTS: {
         TITLE: string;
     };
-    ERROR_PAGE: {
+    ERROR: {
         TITLE: string;
     };
-    NAV: {
-        ABOUT_ME: string;
-        SKILLS: string;
-        GITHUB: string;
-        CONTACTS: string;
-    };
-    FORM_ERRORS: {
-        NAME: FormErrorMessages;
-        COMPANY: FormErrorMessages;
-        EMAIL: {
-            INVALID: string;
-            REQUIRED: string;
-        };
-        LOCATION: {
-            REQUIRED: string;
-        };
-    };
-    FORM_FIELDS: {
-        NAME: string;
-        COMPANY: string;
-        EMAIL: string;
-        LOCATIONS: LocationOption[];
-        SELECT_DEFAULT: string;
-        BUTTON: string;
-    };
+    LOGIN: {
+        TITLE: string;
+        TEXT: string;
+    }
+}
+
+export interface Experience {
+    TITLE: string;
+    DESCRIPTION: string;
 }
 
 export interface FormErrorMessages {
@@ -59,5 +44,3 @@ export interface LocationOption {
     VALUE: string;
     NAME: string;
 }
-
-export type WebsiteTranslations = WebsiteTranslation[];

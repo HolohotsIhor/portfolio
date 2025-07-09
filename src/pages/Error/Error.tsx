@@ -1,12 +1,15 @@
-import { languages } from '../../assets/data/languages';
 import { useAppSelector } from '../../hooks/useRedux.ts';
+import { SectionTitle } from '../../components/SectionTitle/SectionTitle.tsx';
 
 export const ErrorPage = () => {
-    const { language } = useAppSelector(state => state.website);
+    const { language, languages } = useAppSelector(state => state.website);
+    const currentDataLang = languages.find(item => item.lang === language)?.data;
+
+    if (!currentDataLang) return null;
 
     return (
         <>
-            <h1>{languages[language].ERROR_PAGE.TITLE}</h1>
+            <SectionTitle text={currentDataLang.ERROR.TITLE} />
         </>
     );
 }
