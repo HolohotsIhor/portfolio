@@ -1,5 +1,7 @@
 import express from 'express';
 import { mongoDB } from './connect.js';
+
+const SERVER_ERROR = 'Server error';
 const COLLECTION_NAME = 'translations';
 const translationsRoutes = express.Router();
 
@@ -17,7 +19,7 @@ translationsRoutes.route('/translations')
             }
         } catch (e) {
             console.error('Failed to get content:', e);
-            res.status(500).json({ error: 'Internal server error' });
+            res.status(500).json({ error: SERVER_ERROR });
         }
     })
 
@@ -40,9 +42,57 @@ translationsRoutes.route('/translations')
             );
 
             res.status(200).json({ success: true, modifiedCount: result.modifiedCount });
-        } catch (err) {
-            console.error('Failed to add experience:', err);
-            res.status(500).json({ success: false, message: 'Server error' });
+        } catch (e) {
+            console.error('Failed to add experience:', e);
+            res.status(500).json({ success: false, message: SERVER_ERROR });
+        }
+    })
+
+    // === DELETE ONE EXPERIENCE ===
+    .delete(async (req, res) => {
+        try {
+            const db = mongoDB.getDb();
+
+            const { lang, index } = req.body;
+
+            if (typeof lang !== 'string' || typeof index !== 'number') {
+                return res.status(400).json({ success: false, message: 'Invalid request payload' });
+            }
+
+            const doc = await db.collection(COLLECTION_NAME).findOne({ lang });
+
+            if (!doc || !Array.isArray(doc.data?.SKILLS?.EXPERIENCE)) {
+                return res.status(404).json({ success: false, message: 'Experience array not found' });
+            }
+
+            const experienceArray = doc.data.SKILLS.EXPERIENCE;
+
+            if (index < 0 || index >= experienceArray.length) {
+                return res.status(400).json({ success: false, message: 'Index out of bounds' });
+            }
+            const updatedExperience = [...experienceArray];
+            updatedExperience.splice(index, 1);
+
+            const result = await db.collection(COLLECTION_NAME).updateOne(
+                { lang },
+                {
+                    $set: {
+                        "data.SKILLS.EXPERIENCE": updatedExperience,
+                    },
+                }
+            );
+
+            return res.status(200).json({
+                success: true,
+                modifiedCount: result.modifiedCount,
+            });
+
+        } catch (e) {
+            console.error('Failed to delete experience:', e);
+            return res.status(500).json({
+                success: false,
+                message: 'Internal server error',
+            });
         }
     }
 );

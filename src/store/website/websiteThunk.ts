@@ -11,8 +11,8 @@ export const getWebsiteTranslates = createAsyncThunk<WebsiteTranslations[]>(
     'website/getWebsiteTranslates',
     async () => {
         try {
-            const response = await axios.get(`http://localhost:12345/api/translations`);
-            return response.data; // как корректно обработать
+            const { data } = await axios.get(`http://localhost:12345/api/translations`);
+            return data;
         } catch (e) {
             throw new Error('Cannot get translations: ' + e);
         }
@@ -32,11 +32,39 @@ export const addExperienceByLang = createAsyncThunk<
                 { lang, newExperience: experience }
             );
             return data;
-        } catch (error: any) {
-            return thunkAPI.rejectWithValue({
-                message: error.response?.data?.message || 'Server error',
-            });
+        } catch (e: unknown) {
+            if (axios.isAxiosError(e)) {
+                return thunkAPI.rejectWithValue({
+                    message: e.response?.data?.message || 'Server error',
+                });
+            }
+            return thunkAPI.rejectWithValue({ message: 'Unexpected error' });
         }
     }
 );
 
+export const deleteExperienceByLang = createAsyncThunk<
+    { success: boolean; modifiedCount: number },
+    { lang: string; index: number },
+    { rejectValue: { message: string } }
+>(
+    'translations/deleteExperienceByLang',
+    async ({ lang, index }, thunkAPI) => {
+        try {
+            const { data } = await axios.delete<{ success: boolean; modifiedCount: number }>(
+                'http://localhost:12345/api/translations',
+                {
+                    data: { lang, index }
+                }
+            )
+            return data;
+        } catch (e: unknown) {
+            if (axios.isAxiosError(e)) {
+                return thunkAPI.rejectWithValue({
+                    message: e.response?.data?.message || 'Server error',
+                });
+            }
+            return thunkAPI.rejectWithValue({ message: 'Unexpected error' });
+        }
+    }
+)

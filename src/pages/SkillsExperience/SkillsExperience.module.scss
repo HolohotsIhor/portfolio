@@ -19,3 +19,30 @@
     max-width: 650px;
   }
 }
+
+.stepContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 10px;
+}
+
+.buttonGroup {
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.stepContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 10px;
+}
+
+.deleteBtn {
+  margin-left: auto;
+  margin-top: 4px;
+}
+
