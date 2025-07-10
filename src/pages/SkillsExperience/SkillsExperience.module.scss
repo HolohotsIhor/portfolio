@@ -8,8 +8,13 @@
   }
 
   @include desktop {
-    gap: calc($x5 * 2);
+    gap: calc($x5 * 3);
     align-items: flex-start;
     text-align: center;
+    justify-content: flex-start;
+  }
+
+  @include desktop-lg {
+    gap: calc($x5 * 5);
   }
 }

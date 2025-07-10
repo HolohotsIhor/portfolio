@@ -16,5 +16,6 @@
 
   @include desktop {
     flex-direction: row;
+    max-width: calc((100% - 730px) / 2);
   }
 }

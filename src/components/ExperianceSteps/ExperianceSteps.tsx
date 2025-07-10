@@ -12,7 +12,7 @@ const { Text } = Typography;
 export const ExperianceSteps = () => {
     const [ form] = Form.useForm();
     const [ currentIndex, setCurrentIndex] = useState(0);
-    const { language, languages } = useAppSelector(state => state.website);
+    const { language, languages, isAuth } = useAppSelector(state => state.website);
     const [modalOpen, setModalOpen] = useState(false);
     const currentDataLang = languages.find(item => item.lang === language)?.data;
     const dispatch = useAppDispatch();
@@ -62,21 +62,25 @@ export const ExperianceSteps = () => {
             description: item.DESCRIPTION ? (
                 <div className={styles.stepContent}>
                     <div dangerouslySetInnerHTML={{ __html: item.DESCRIPTION }} />
-                    <div className={styles.buttonGroup}>
-                        <Button
-                            type="text"
-                            icon={<EditOutlined />}
-                            onClick={() => handleEdit(index)}
-                            size="small"
-                        />
-                        <Button
-                            type="text"
-                            icon={<DeleteOutlined />}
-                            onClick={() => handleDelete(index)}
-                            danger
-                            size="small"
-                        />
-                    </div>
+                    {
+                        isAuth && (
+                            <div className={styles.buttonGroup}>
+                                <Button
+                                    type="text"
+                                    icon={<EditOutlined />}
+                                    onClick={() => handleEdit(index)}
+                                    size="small"
+                                />
+                                <Button
+                                    type="text"
+                                    icon={<DeleteOutlined />}
+                                    onClick={() => handleDelete(index)}
+                                    danger
+                                    size="small"
+                                />
+                            </div>
+                        )
+                    }
                 </div>
             ) : (
                 <div>No item description...</div>
@@ -94,7 +98,9 @@ export const ExperianceSteps = () => {
                         items={items}
                         className={styles.steps}
                     />
-                    <ExperienceModal />
+                    {
+                        isAuth && <ExperienceModal />
+                    }
                 </div>
             ) : (
                 <Text type="danger">No experience data...</Text>
