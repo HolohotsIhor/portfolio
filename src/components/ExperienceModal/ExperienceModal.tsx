@@ -2,13 +2,10 @@ import { Button, Form, FormProps, Input, Modal } from 'antd';
 import { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/useRedux.ts';
 import { addExperienceByLang } from '../../store/website/websiteThunk.ts';
-
-type FieldType = {
-    title: string;
-    description: string;
-};
+import { FieldType } from '../../models/translationsModels.ts';
 
 export const ExperienceModal = () => {
+    const [ form] = Form.useForm();
     const [modalOpen, setModalOpen] = useState(false);
     const { language } = useAppSelector(state => state.website);
     const dispatch = useAppDispatch();
@@ -22,7 +19,7 @@ export const ExperienceModal = () => {
             },
         }));
         setModalOpen(false);
-        // form.resetFields();
+        form.resetFields();
     };
 
     const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = (errorInfo) => {
@@ -45,6 +42,7 @@ export const ExperienceModal = () => {
             >
                 <Form
                     name="basic"
+                    form={form}
                     initialValues={{ remember: true }}
                     onFinish={onFinish}
                     onFinishFailed={onFinishFailed}
@@ -63,7 +61,7 @@ export const ExperienceModal = () => {
                         name="description"
                         rules={[{ required: true, message: 'Please input text for experience' }]}
                     >
-                        <Input />
+                        <Input.TextArea />
                     </Form.Item>
 
                     <Form.Item label={null}>

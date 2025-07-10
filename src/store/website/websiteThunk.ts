@@ -7,6 +7,11 @@ interface ExperienceItem {
     DESCRIPTION: string;
 }
 
+interface ServerResponse {
+    success: boolean;
+    modifiedCount: number
+}
+
 export const getWebsiteTranslates = createAsyncThunk<WebsiteTranslations[]>(
     'website/getWebsiteTranslates',
     async () => {
@@ -27,7 +32,7 @@ export const addExperienceByLang = createAsyncThunk<
     'translations/addExperienceByLang',
     async ({ lang, experience }, thunkAPI) => {
         try {
-            const { data } = await axios.post<{ success: boolean; modifiedCount: number }>(
+            const { data } = await axios.post<ServerResponse>(
                 'http://localhost:12345/api/translations',
                 { lang, newExperience: experience }
             );
@@ -51,11 +56,35 @@ export const deleteExperienceByLang = createAsyncThunk<
     'translations/deleteExperienceByLang',
     async ({ lang, index }, thunkAPI) => {
         try {
-            const { data } = await axios.delete<{ success: boolean; modifiedCount: number }>(
+            const { data } = await axios.delete<ServerResponse>(
                 'http://localhost:12345/api/translations',
                 {
                     data: { lang, index }
                 }
+            )
+            return data;
+        } catch (e: unknown) {
+            if (axios.isAxiosError(e)) {
+                return thunkAPI.rejectWithValue({
+                    message: e.response?.data?.message || 'Server error',
+                });
+            }
+            return thunkAPI.rejectWithValue({ message: 'Unexpected error' });
+        }
+    }
+)
+
+export const updateExperienceByLang = createAsyncThunk<
+    { success: boolean; modifiedCount: number },
+    { lang: string; index: number; newItem: ExperienceItem  },
+    { rejectValue: { message: string } }
+>(
+    'translations/updateExperienceByLang',
+    async ({ lang, index, newItem }, thunkAPI) => {
+        try {
+            const { data } = await axios.put<ServerResponse>(
+                'http://localhost:12345/api/translations',
+                { lang, index, newItem }
             )
             return data;
         } catch (e: unknown) {

@@ -44,3 +44,8 @@ export interface LocationOption {
     VALUE: string;
     NAME: string;
 }
+
+export type FieldType = {
+    title: string;
+    description: string;
+};

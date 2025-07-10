@@ -8,7 +8,12 @@ import {
     THEME_COLOR_LIGHT, LANG_EN, IS_AUTH_STORAGE_KEY
 } from '../../helpers/constant.ts';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { addExperienceByLang, deleteExperienceByLang, getWebsiteTranslates } from './websiteThunk.ts';
+import {
+    addExperienceByLang,
+    deleteExperienceByLang,
+    getWebsiteTranslates,
+    updateExperienceByLang
+} from './websiteThunk.ts';
 import { WebsiteTranslations } from '../../models/translationsModels.ts';
 
 const savedTheme = localStorage.getItem(THEME_STORAGE_KEY);
@@ -96,7 +101,7 @@ export const websiteSlice = createSlice({
             })
             .addCase(deleteExperienceByLang.fulfilled, (state, action) => {
                 const { lang, index } = action.meta.arg;
-                const langObj = state.languages.find((item) => item.lang === lang);
+                const langObj = state.languages.find(item => item.lang === lang);
 
                 state.loading = false;
 
@@ -106,6 +111,25 @@ export const websiteSlice = createSlice({
 
                 if (index >= 0 && index < experienceList.length) {
                     experienceList.splice(index, 1);
+                }
+            })
+
+            // === UPDATE EXPERIENCE BY LANG AND INDEX ===
+            .addCase(updateExperienceByLang.pending, (state) => {
+                state.loading = true;
+            })
+            .addCase(updateExperienceByLang.fulfilled, (state, action) => {
+                const { lang, index, newItem } = action.meta.arg;
+                const langObj = state.languages.find(item => item.lang === lang);
+
+                state.loading = false;
+
+                if (!langObj) return;
+
+                const experienceList = langObj.data.SKILLS.EXPERIENCE;
+
+                if (index >= 0 && index < experienceList.length) {
+                    experienceList[index] = newItem;
                 }
             });
     },
